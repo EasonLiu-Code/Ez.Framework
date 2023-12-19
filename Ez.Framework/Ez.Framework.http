@@ -1,0 +1,6 @@
+@Ez.Framework_HostAddress = http://localhost:5250
+
+GET {{Ez.Framework_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

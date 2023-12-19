@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ez.Framework", "Ez.Framework\Ez.Framework.csproj", "{BC645B82-6CCA-41C7-AC4D-FD23CECE1E63}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ez.Framework.Host", "Ez.Framework.Host\Ez.Framework.Host.csproj", "{BC645B82-6CCA-41C7-AC4D-FD23CECE1E63}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ez.Domain", "Ez.Domain\Ez.Domain.csproj", "{6A3E9AA8-F590-4885-87B8-5D16A68EF1CA}"
 EndProject

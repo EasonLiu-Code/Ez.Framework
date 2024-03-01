@@ -10,18 +10,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    // var xmlFiles = Directory.GetFiles(
-    //     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "App_Data"),
-    //     "Ez.Framework*xml",
-    //     SearchOption.AllDirectories).ToList();
-    var appDataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "App_Data");
-    var xmlFiles = Directory.GetFiles(appDataPath, "Ez.Framework*xml", SearchOption.AllDirectories).ToList();
-
-
-    foreach (var xmlFile in xmlFiles)
-    {
-        c.IncludeXmlComments(xmlFile, true);
-    }
+    var file = Path.Combine(AppContext.BaseDirectory, "Ez.Framework.Host.xml");
+    var path = Path.Combine(AppContext.BaseDirectory, file);
+    c.IncludeXmlComments(path ,true);
 });
 var app = builder.Build();
 

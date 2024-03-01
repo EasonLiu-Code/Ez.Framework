@@ -1,10 +1,19 @@
+
+SetThreadPool();
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    var file = Path.Combine(AppContext.BaseDirectory, "EzFrameWork.xml");
+    var path = Path.Combine(AppContext.BaseDirectory, file);
+    c.IncludeXmlComments(path ,true);
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -37,6 +46,16 @@ app.MapGet("/weatherforecast", () =>
     .WithOpenApi();
 
 app.Run();
+
+static void SetThreadPool()
+{
+    ThreadPool.GetMinThreads(out var minWorkerThreads, out var minCompletionPortThreads);
+    ThreadPool.SetMinThreads(
+        minWorkerThreads < 100 ? 100 : minWorkerThreads,
+        minCompletionPortThreads < 100 ? 100 : minCompletionPortThreads);
+    ThreadPool.GetMaxThreads(out var maxWorkerThreads, out var maxCompletionPortThreads);
+    ThreadPool.SetMaxThreads(maxWorkerThreads, maxCompletionPortThreads <= 3000 ? 3000 : maxCompletionPortThreads);
+}
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {

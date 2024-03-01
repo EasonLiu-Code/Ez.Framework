@@ -15,4 +15,8 @@
       <DocumentationFile>Ez.Framework.Infrastructure.xml</DocumentationFile>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="MassTransit" Version="8.1.3" />
+    </ItemGroup>
+
 </Project>

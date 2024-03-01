@@ -1,10 +1,14 @@
 
+using Ez.Domain.Events;
+using MassTransit;
+
 SetThreadPool();
 var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -15,6 +19,15 @@ builder.Services.AddSwaggerGen(c =>
     var path = Path.Combine(AppContext.BaseDirectory, file);
     c.IncludeXmlComments(path ,true);
 });
+//配置MassTransit
+builder.Services.AddMassTransit(busConfigurator =>
+{
+    busConfigurator.SetKebabCaseEndpointNameFormatter();
+    
+    //本地开发use
+    busConfigurator.UsingInMemory((context,config)=>config.ConfigureEndpoints(context));
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

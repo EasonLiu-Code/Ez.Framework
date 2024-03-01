@@ -2,11 +2,11 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ez.Framework.Host", "Ez.Framework.Host\Ez.Framework.Host.csproj", "{BC645B82-6CCA-41C7-AC4D-FD23CECE1E63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ez.Domain", "Ez.Domain\Ez.Domain.csproj", "{6A3E9AA8-F590-4885-87B8-5D16A68EF1CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ez.Framework.Domain", "Ez.Framework.Domain\Ez.Framework.Domain.csproj", "{6A3E9AA8-F590-4885-87B8-5D16A68EF1CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ez.Application", "Ez.Application\Ez.Application.csproj", "{8EF09BA3-62E0-4357-9A05-EBC9B67237F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ez.Framework.Application", "Ez.Framework.Application\Ez.Framework.Application.csproj", "{8EF09BA3-62E0-4357-9A05-EBC9B67237F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ez.Infrastructure", "Ez.Infrastructure\Ez.Infrastructure.csproj", "{C8E9A960-B394-480A-AC17-F518E92676F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ez.Framework.Infrastructure", "Ez.Framework.Infrastructure\Ez.Framework.Infrastructure.csproj", "{C8E9A960-B394-480A-AC17-F518E92676F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

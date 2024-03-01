@@ -4,14 +4,15 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>Ez.Infrastructure</RootNamespace>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <DocumentationFile>bin\Debug\Ez.Infrastructure.xml</DocumentationFile>
+      <DocumentationFile>Ez.Framework.Infrastructure.xml</DocumentationFile>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-      <DocumentationFile>bin\Release\Ez.Infrastructure.xml</DocumentationFile>
+      <DocumentationFile>Ez.Framework.Infrastructure.xml</DocumentationFile>
     </PropertyGroup>
 
 </Project>

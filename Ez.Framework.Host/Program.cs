@@ -5,7 +5,6 @@ using MassTransit;
 SetThreadPool();
 var builder = WebApplication.CreateBuilder(args);
 
-
 // Add services to the container.
 builder.Services.AddControllers();
 
@@ -23,9 +22,10 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddMassTransit(busConfigurator =>
 {
     busConfigurator.SetKebabCaseEndpointNameFormatter();
+    busConfigurator.UsingRabbitMq();
     
     //本地开发use
-    busConfigurator.UsingInMemory((context,config)=>config.ConfigureEndpoints(context));
+    //busConfigurator.UsingInMemory((context,config)=>config.ConfigureEndpoints(context));
 });
 
 var app = builder.Build();
@@ -44,20 +44,6 @@ var summaries = new[]
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
-app.MapGet("/weatherforecast", () =>
-    {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast")
-    .WithOpenApi();
 
 app.Run();
 

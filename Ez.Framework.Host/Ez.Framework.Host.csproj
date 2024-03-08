@@ -28,8 +28,4 @@
       <ProjectReference Include="..\Ez.Framework.Domain\Ez.Framework.Domain.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="EndPoints\" />
-    </ItemGroup>
-
 </Project>

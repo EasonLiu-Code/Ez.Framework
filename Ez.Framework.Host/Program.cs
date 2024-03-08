@@ -1,4 +1,5 @@
 
+using Carter;
 using Ez.Domain.Events;
 using MassTransit;
 
@@ -27,6 +28,7 @@ builder.Services.AddMassTransit(busConfigurator =>
     //本地开发use
     //busConfigurator.UsingInMemory((context,config)=>config.ConfigureEndpoints(context));
 });
+builder.Services.AddCarter();
 
 var app = builder.Build();
 

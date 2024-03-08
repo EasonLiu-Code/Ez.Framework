@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ez.Framework.Application", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ez.Framework.Infrastructure", "Ez.Framework.Infrastructure\Ez.Framework.Infrastructure.csproj", "{C8E9A960-B394-480A-AC17-F518E92676F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\Persistence.csproj", "{792AC58D-BC44-4E73-A28A-2262B30AB340}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{C8E9A960-B394-480A-AC17-F518E92676F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8E9A960-B394-480A-AC17-F518E92676F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8E9A960-B394-480A-AC17-F518E92676F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{792AC58D-BC44-4E73-A28A-2262B30AB340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{792AC58D-BC44-4E73-A28A-2262B30AB340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{792AC58D-BC44-4E73-A28A-2262B30AB340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{792AC58D-BC44-4E73-A28A-2262B30AB340}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

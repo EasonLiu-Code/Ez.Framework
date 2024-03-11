@@ -20,8 +20,9 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddMassTransit(busConfigurator =>
 {
     busConfigurator.SetKebabCaseEndpointNameFormatter();
+    //RabbitMq
     busConfigurator.UsingRabbitMq();
-    //本地开发use
+    //本地内存缓存
     //busConfigurator.UsingInMemory((context,config)=>config.ConfigureEndpoints(context));
 });
 builder.Services.AddCarter();

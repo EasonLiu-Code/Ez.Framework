@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ez.Framework.Infrastructure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ez.Framework.Persistence", "Ez.Framework.Persistence\Ez.Framework.Persistence.csproj", "{792AC58D-BC44-4E73-A28A-2262B30AB340}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ez.Framework.GrpcService", "Ez.Framework.GrpcService\Ez.Framework.GrpcService.csproj", "{9568AB47-3241-4DEE-B74A-EB605138FBE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{792AC58D-BC44-4E73-A28A-2262B30AB340}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{792AC58D-BC44-4E73-A28A-2262B30AB340}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{792AC58D-BC44-4E73-A28A-2262B30AB340}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9568AB47-3241-4DEE-B74A-EB605138FBE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9568AB47-3241-4DEE-B74A-EB605138FBE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9568AB47-3241-4DEE-B74A-EB605138FBE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9568AB47-3241-4DEE-B74A-EB605138FBE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

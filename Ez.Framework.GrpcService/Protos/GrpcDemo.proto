@@ -1,0 +1,49 @@
+syntax = "proto3";//版本
+
+option csharp_namespace = "GrpcDemoGrpc";//命名空间
+
+package GrpcDemo;//包名
+
+service GrpcDemo {
+  //Create
+rpc CreateGrpcDemo(CreateGrpcDemoRequest) returns (CreateGrpcDemoResponse){};
+  //Read Single
+rpc ReadGrpcDemo(ReadGrpcDemoRequest) returns (ReadGrpcDemoResponse){};
+  //Read List
+rpc ReadListGrpcDemo(GetAllRequest) returns (GetAllResponse){};
+  //Update
+rpc UpdateGrpcDemo(UpdateGrpcDemoRequest)returns(UpdateGrpcDemoResponse){};
+  
+}
+message CreateGrpcDemoRequest{
+  string title=1;
+  string description=2;
+}
+
+message CreateGrpcDemoResponse{
+  int32 id=1;
+}
+message ReadGrpcDemoRequest{
+  int32 id=1;
+}
+message ReadGrpcDemoResponse{
+  int32 id=1;
+  string title=2;
+  string description=3;
+  string grpc_demo_status=4;
+}
+message GetAllRequest{
+}
+message GetAllResponse{
+  repeated ReadGrpcDemoResponse to_do=1;
+}
+
+message UpdateGrpcDemoRequest{
+  int32 id=1;
+  string title=2;
+  string description=3;
+  string grpc_demo_status=4;
+}
+message UpdateGrpcDemoResponse {
+  int32 id=1;
+}

@@ -21,7 +21,15 @@ builder.Services.AddMassTransit(busConfigurator =>
 {
     busConfigurator.SetKebabCaseEndpointNameFormatter();
     //RabbitMq
-    busConfigurator.UsingRabbitMq();
+    busConfigurator.UsingRabbitMq((context, config) =>
+    {
+        //配置样例
+        config.Host("localhost","/", h =>
+        {
+            h.Username("guest");
+            h.Password("guest");
+        });
+    });
     //本地内存缓存
     //busConfigurator.UsingInMemory((context,config)=>config.ConfigureEndpoints(context));
 });

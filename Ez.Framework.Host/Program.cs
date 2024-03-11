@@ -25,6 +25,7 @@ builder.Services.AddMassTransit(busConfigurator =>
     //本地内存缓存
     //busConfigurator.UsingInMemory((context,config)=>config.ConfigureEndpoints(context));
 });
+//Carter
 builder.Services.AddCarter();
 
 var app = builder.Build();
@@ -35,6 +36,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+//Carter
+app.MapCarter();
 app.UseHttpsRedirection();
 app.Run();
 

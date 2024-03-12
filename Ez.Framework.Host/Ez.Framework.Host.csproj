@@ -25,7 +25,13 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Ez.Framework.Application\Ez.Framework.Application.csproj" />
       <ProjectReference Include="..\Ez.Framework.Domain\Ez.Framework.Domain.csproj" />
+      <ProjectReference Include="..\Ez.Framework.Persistence\Ez.Framework.Persistence.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="EndPoints\" />
     </ItemGroup>
 
 </Project>

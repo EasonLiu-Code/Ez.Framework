@@ -1,5 +1,8 @@
 using Carter;
+using Ez.Application;
+using Ez.Domain;
 using MassTransit;
+using Persistence;
 
 SetThreadPool();
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +19,10 @@ builder.Services.AddSwaggerGen(c =>
     var path = Path.Combine(AppContext.BaseDirectory, file);
     c.IncludeXmlComments(path ,true);
 });
+builder.Services.AddApplication();
+builder.Services.AddDomain();
+builder.Services.AddPersistence(builder.Configuration);
+
 //配置MassTransit
 builder.Services.AddMassTransit(busConfigurator =>
 {

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ez.Framework.Application</name>
+    </assembly>
+    <members>
+        <member name="T:Ez.Application.DependencyInjection">
+            <summary>
+            DependencyInjection
+            </summary>
+        </member>
+        <member name="M:Ez.Application.DependencyInjection.AddApplication(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            AddApplication
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

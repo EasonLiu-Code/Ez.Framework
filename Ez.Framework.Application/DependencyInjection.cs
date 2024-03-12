@@ -8,7 +8,7 @@ namespace Ez.Application;
 public static class DependencyInjection
 {
     /// <summary>
-    /// di
+    /// AddApplication
     /// </summary>
     /// <param name="services"></param>
     /// <returns></returns>

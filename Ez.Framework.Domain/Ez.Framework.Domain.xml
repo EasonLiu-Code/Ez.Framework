@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ez.Framework.Domain</name>
+    </assembly>
+    <members>
+        <member name="T:Ez.Domain.DependencyInjection">
+            <summary>
+            DependencyInjection
+            </summary>
+        </member>
+        <member name="M:Ez.Domain.DependencyInjection.AddDomain(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            AddDomain
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ez.Domain.Entities.BaseEntity">
+            <summary>
+            BaseEntity
+            </summary>
+        </member>
+        <member name="P:Ez.Domain.Entities.BaseEntity.Id">
+            <summary> 主键 </summary>
+        </member>
+        <member name="P:Ez.Domain.Entities.BaseEntity.IsDeleted">
+            <summary>是否删除</summary>
+        </member>
+        <member name="M:Ez.Domain.Entities.BaseEntity.Delete">
+            <summary></summary>
+        </member>
+        <member name="M:Ez.Domain.Entities.BaseEntity.UnDelete">
+            <summary></summary>
+        </member>
+        <member name="T:Ez.Domain.Events.MessagePublisher">
+            <summary>
+            MessagePublisher
+            </summary>
+        </member>
+        <member name="M:Ez.Domain.Events.MessagePublisher.#ctor(MassTransit.IBus)">
+            <summary>
+            MessagePublisher
+            </summary>
+        </member>
+        <member name="M:Ez.Domain.Events.MessagePublisher.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            
+            </summary>
+            <param name="stoppingToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:Ez.Domain.Events.CurrentTime">
+            <summary>
+            CurrentTime
+            </summary>
+        </member>
+        <member name="P:Ez.Domain.Events.CurrentTime.Value">
+            <summary></summary>
+        </member>
+    </members>
+</doc>

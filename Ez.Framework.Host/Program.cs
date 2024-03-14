@@ -1,9 +1,7 @@
-using System.Reflection;
+
 using Carter;
 using Ez.Application;
 using Ez.Domain;
-using Ez.Domain.CommonDtos;
-using Ez.Domain.Consumers;
 using Ez.Domain.EventPublishers;
 using MassTransit;
 using Persistence;

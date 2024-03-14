@@ -4,9 +4,9 @@ using MassTransit;
 namespace Ez.Domain.Consumers;
 
 /// <summary>
-/// TestConsumer
+/// Consumer
 /// </summary>
-public class TestConsumer:IConsumer<TestMessage>,IConsumer
+public class TestConsumer:IConsumer,IConsumer<TestMessage>
 {
     /// <summary>
     /// Consume

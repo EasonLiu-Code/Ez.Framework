@@ -30,8 +30,4 @@
       <ProjectReference Include="..\Ez.Framework.Persistence\Ez.Framework.Persistence.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="EndPoints\" />
-    </ItemGroup>
-
 </Project>

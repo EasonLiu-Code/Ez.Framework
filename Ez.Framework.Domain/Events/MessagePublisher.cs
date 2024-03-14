@@ -1,4 +1,5 @@
-﻿using MassTransit;
+﻿using Ez.Domain.CommonDtos;
+using MassTransit;
 using Microsoft.Extensions.Hosting;
 
 namespace Ez.Domain.Events;
@@ -18,25 +19,13 @@ public class MessagePublisher(IBus bus):BackgroundService
     {
         while (!stoppingToken.IsCancellationRequested)
         {
-            await bus.Publish(
-                new
+            await bus.Publish<TestMessage>(
+                new TestMessage
                 {
-                    Value=$"MessagePublisher  the current time is {DateTime.UtcNow}"
+                   DateTime = DateTime.Now
                 }, stoppingToken);
-            await Task.Delay(1000, stoppingToken);
+            Console.WriteLine("Current Publisher is Succeed!!!!!!!!!!!!!!!");
+            await Task.Delay(TimeSpan.FromMinutes(1), stoppingToken);
         }
     }
-}
-
-/// <summary>
-/// CurrentTime
-/// </summary>
-public record CurrentTime
-{
-    /// <summary></summary>
-    public string Value
-    {
-        get;
-        init;
-    }=string.Empty;
 }

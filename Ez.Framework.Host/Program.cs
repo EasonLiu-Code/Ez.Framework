@@ -1,8 +1,13 @@
+using System.Reflection;
 using Carter;
 using Ez.Application;
 using Ez.Domain;
+using Ez.Domain.CommonDtos;
+using Ez.Domain.Consumers;
+using Ez.Domain.Events;
 using MassTransit;
 using Persistence;
+using IConsumer = Ez.Domain.Consumers.IConsumer;
 
 SetThreadPool();
 var builder = WebApplication.CreateBuilder(args);
@@ -28,18 +33,29 @@ builder.Services.AddMassTransit(busConfigurator =>
 {
     busConfigurator.SetKebabCaseEndpointNameFormatter();
     //RabbitMq
-    busConfigurator.UsingRabbitMq((context, config) =>
+    // busConfigurator.UsingRabbitMq((context, configurator) =>
+    // {
+    //     configurator.Host(new Uri(builder.Configuration["MessageBroker:Host"]!), h =>
+    //     {
+    //         h.Username(builder.Configuration["MessageBroker:Username"]);
+    //         h.Password(builder.Configuration["MessageBroker:Password"]);
+    //     });
+    //     configurator.ConfigureEndpoints(context);
+    // });
+    //Memory
+    busConfigurator.UsingInMemory((context,config)=>config.ConfigureEndpoints(context));
+    
+    //Sign in Consumer 
+    var consumers = Assembly.GetExecutingAssembly().GetTypes()
+        .Where(type => type is { IsClass: true, IsAbstract: false } && typeof(IConsumer).IsAssignableFrom(type));
+    foreach (var consumer in consumers)
     {
-        //配置样例
-        config.Host("localhost","/", h =>
-        {
-            h.Username("guest");
-            h.Password("guest");
-        });
-    });
-    //本地内存缓存
-    //busConfigurator.UsingInMemory((context,config)=>config.ConfigureEndpoints(context));
+        busConfigurator.AddConsumer(consumer);
+    }
 });
+//测试后台运行self-publisher and consumer
+builder.Services.AddHostedService<MessagePublisher>();
+
 //Carter
 builder.Services.AddCarter();
 
@@ -51,11 +67,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 //Carter
 app.MapCarter();
 app.UseHttpsRedirection();
 app.Run();
-
 
 
 static void SetThreadPool()
@@ -66,9 +82,4 @@ static void SetThreadPool()
         minCompletionPortThreads < 100 ? 100 : minCompletionPortThreads);
     ThreadPool.GetMaxThreads(out var maxWorkerThreads, out var maxCompletionPortThreads);
     ThreadPool.SetMaxThreads(maxWorkerThreads, maxCompletionPortThreads <= 3000 ? 3000 : maxCompletionPortThreads);
-}
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }

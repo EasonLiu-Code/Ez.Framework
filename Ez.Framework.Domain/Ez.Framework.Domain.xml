@@ -4,6 +4,34 @@
         <name>Ez.Framework.Domain</name>
     </assembly>
     <members>
+        <member name="T:Ez.Domain.CommonDtos.TestMessage">
+            <summary>
+            test
+            </summary>
+        </member>
+        <member name="P:Ez.Domain.CommonDtos.TestMessage.DateTime">
+            <summary>
+            DateTime
+            </summary>
+        </member>
+        <member name="T:Ez.Domain.Consumers.IConsumer">
+            <summary>
+            Mark
+            </summary>
+        </member>
+        <member name="T:Ez.Domain.Consumers.TestConsumer">
+            <summary>
+            TestConsumer
+            </summary>
+        </member>
+        <member name="M:Ez.Domain.Consumers.TestConsumer.Consume(MassTransit.ConsumeContext{Ez.Domain.CommonDtos.TestMessage})">
+            <summary>
+            Consume
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
         <member name="T:Ez.Domain.DependencyInjection">
             <summary>
             DependencyInjection
@@ -50,14 +78,6 @@
             <param name="stoppingToken"></param>
             <returns></returns>
             <exception cref="T:System.NotImplementedException"></exception>
-        </member>
-        <member name="T:Ez.Domain.Events.CurrentTime">
-            <summary>
-            CurrentTime
-            </summary>
-        </member>
-        <member name="P:Ez.Domain.Events.CurrentTime.Value">
-            <summary></summary>
         </member>
     </members>
 </doc>

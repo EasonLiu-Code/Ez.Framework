@@ -10,12 +10,12 @@ namespace Ez.Framework.Controllers;
 public class TestController
 {
     /// <summary>
-    /// TestXml
+    /// Template
     /// </summary>
     /// <returns></returns>
     [HttpGet]
-    public async Task<string> TestXmlAsync()
+    public async Task<DateTime> TestMessageAsync()
     {
-        return "TestXml";
+        return DateTime.Now;
     }
 }

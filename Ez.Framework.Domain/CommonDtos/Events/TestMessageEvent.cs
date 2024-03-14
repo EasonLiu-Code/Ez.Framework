@@ -1,9 +1,9 @@
-﻿namespace Ez.Domain.CommonDtos;
+﻿namespace Ez.Domain.CommonDtos.Events;
 
 /// <summary>
-/// test
+/// TestMessageEvent
 /// </summary>
-public class TestMessage
+public record TestMessageEvent
 {
     /// <summary>
     /// DateTime

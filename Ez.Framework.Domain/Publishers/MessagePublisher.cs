@@ -1,8 +1,9 @@
 ﻿using Ez.Domain.CommonDtos;
+using Ez.Domain.CommonDtos.Events;
 using MassTransit;
 using Microsoft.Extensions.Hosting;
 
-namespace Ez.Domain.EventPublishers;
+namespace Ez.Domain.Publishers;
 
 /// <summary>
 /// MessagePublisher
@@ -19,7 +20,7 @@ public class MessagePublisher(IBus bus):BackgroundService
     {
         while (!stoppingToken.IsCancellationRequested)
         {
-            await bus.Publish<TestMessage>(
+            await bus.Publish<TestMessageEvent>(
                 new 
                 {
                    DateTime = DateTime.Now

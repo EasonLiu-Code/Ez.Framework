@@ -2,7 +2,7 @@
 using Carter;
 using Ez.Application;
 using Ez.Domain;
-using Ez.Domain.EventPublishers;
+using Ez.Domain.Publishers;
 using MassTransit;
 using Persistence;
 using IConsumer = Ez.Domain.Consumers.IConsumer;

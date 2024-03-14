@@ -4,12 +4,12 @@
         <name>Ez.Framework.Domain</name>
     </assembly>
     <members>
-        <member name="T:Ez.Domain.CommonDtos.TestMessage">
+        <member name="T:Ez.Domain.CommonDtos.Events.TestMessageEvent">
             <summary>
-            test
+            TestMessageEvent
             </summary>
         </member>
-        <member name="P:Ez.Domain.CommonDtos.TestMessage.DateTime">
+        <member name="P:Ez.Domain.CommonDtos.Events.TestMessageEvent.DateTime">
             <summary>
             DateTime
             </summary>
@@ -21,10 +21,10 @@
         </member>
         <member name="T:Ez.Domain.Consumers.TestConsumer">
             <summary>
-            TestConsumer
+            Consumer
             </summary>
         </member>
-        <member name="M:Ez.Domain.Consumers.TestConsumer.Consume(MassTransit.ConsumeContext{Ez.Domain.CommonDtos.TestMessage})">
+        <member name="M:Ez.Domain.Consumers.TestConsumer.Consume(MassTransit.ConsumeContext{Ez.Domain.CommonDtos.Events.TestMessageEvent})">
             <summary>
             Consume
             </summary>
@@ -61,17 +61,17 @@
         <member name="M:Ez.Domain.Entities.BaseEntity.UnDelete">
             <summary></summary>
         </member>
-        <member name="T:Ez.Domain.Events.MessagePublisher">
+        <member name="T:Ez.Domain.Publishers.MessagePublisher">
             <summary>
             MessagePublisher
             </summary>
         </member>
-        <member name="M:Ez.Domain.Events.MessagePublisher.#ctor(MassTransit.IBus)">
+        <member name="M:Ez.Domain.Publishers.MessagePublisher.#ctor(MassTransit.IBus)">
             <summary>
             MessagePublisher
             </summary>
         </member>
-        <member name="M:Ez.Domain.Events.MessagePublisher.ExecuteAsync(System.Threading.CancellationToken)">
+        <member name="M:Ez.Domain.Publishers.MessagePublisher.ExecuteAsync(System.Threading.CancellationToken)">
             <summary>
             
             </summary>

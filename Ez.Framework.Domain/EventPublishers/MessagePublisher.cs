@@ -2,7 +2,7 @@
 using MassTransit;
 using Microsoft.Extensions.Hosting;
 
-namespace Ez.Domain.Events;
+namespace Ez.Domain.EventPublishers;
 
 /// <summary>
 /// MessagePublisher
@@ -20,7 +20,7 @@ public class MessagePublisher(IBus bus):BackgroundService
         while (!stoppingToken.IsCancellationRequested)
         {
             await bus.Publish<TestMessage>(
-                new TestMessage
+                new 
                 {
                    DateTime = DateTime.Now
                 }, stoppingToken);

@@ -4,7 +4,7 @@ using Ez.Application;
 using Ez.Domain;
 using Ez.Domain.CommonDtos;
 using Ez.Domain.Consumers;
-using Ez.Domain.Events;
+using Ez.Domain.EventPublishers;
 using MassTransit;
 using Persistence;
 using IConsumer = Ez.Domain.Consumers.IConsumer;

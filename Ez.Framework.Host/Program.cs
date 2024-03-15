@@ -52,7 +52,7 @@ builder.Services.AddMassTransit(busConfigurator =>
     }
 });
 //测试后台运行self-publisher and self-consumer
-builder.Services.AddHostedService<MessagePublisher>();
+builder.Services.AddHostedService<MessagePublisher>(); 
 
 //Carter
 builder.Services.AddCarter();

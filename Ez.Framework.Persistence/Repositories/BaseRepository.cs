@@ -1,9 +1,8 @@
-﻿namespace Persistence.Repositories;
+﻿using Ez.Domain;
+using Ez.Domain.Entities;
 
-internal abstract class BaseRepository
+namespace Persistence.Repositories;
+
+internal abstract class BaseRepository<TEntity>(ApplicationDbContext dbContext):IBaseRepository<TEntity> where TEntity:BaseEntity
 {
-    protected BaseRepository()
-    {
-        
-    }
 }

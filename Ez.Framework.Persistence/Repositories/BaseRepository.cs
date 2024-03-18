@@ -91,13 +91,13 @@ internal abstract class BaseRepository<TEntity>(ApplicationDbContext dbContext):
     }
 
     public async Task ExecuteUpdateAsync(
-        Func<TEntity, TEntity> property,
-        Func<TEntity, TEntity> propertySetter,
+        Func<TEntity, TEntity> propertyExpression,
+        Func<TEntity, TEntity> valueExpression,
         bool autoSave = false,
         CancellationToken cancellationToken = default)
     {
         await dbContext.Set<TEntity>().ExecuteUpdateAsync(s=>
-            s.SetProperty(property,propertySetter), cancellationToken: cancellationToken);
+            s.SetProperty(propertyExpression,valueExpression), cancellationToken: cancellationToken);
         if (!autoSave)
             return;
         await this.SaveChangesAsync(cancellationToken);

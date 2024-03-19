@@ -77,7 +77,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+//cors
+app.UseCors("AllowAll");
 //Carter
 app.MapCarter();
 app.UseHttpsRedirection();

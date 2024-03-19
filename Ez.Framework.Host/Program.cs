@@ -52,7 +52,19 @@ builder.Services.AddMassTransit(busConfigurator =>
     }
 });
 //测试后台运行self-publisher and self-consumer
-builder.Services.AddHostedService<MessagePublisher>(); 
+builder.Services.AddHostedService<MessagePublisher>();
+
+#region Cors
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder => builder
+            .SetIsOriginAllowed(_ => true)
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials());
+});
+#endregion
 
 //Carter
 builder.Services.AddCarter();

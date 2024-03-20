@@ -5,6 +5,12 @@
 /// </summary>
 public class Article:BaseEntity
 {
+    
+    /// <summary>
+    /// ArticleId
+    /// </summary>
+    public Guid  ArticleId { get; set; }
+
     /// <summary>
     /// Title
     /// </summary>

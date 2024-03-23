@@ -43,7 +43,6 @@
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
       "environmentVariables": {
         "ASPNETCORE_HTTP_PORTS": "9000",
-        "ASPNETCORE_HTTPS_PORTS": "9001"
       },
       "publishAllPorts": true,
       "useSSL": true

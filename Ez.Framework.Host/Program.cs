@@ -47,7 +47,7 @@ builder.Services.AddMassTransit(busConfigurator =>
         configurator.ConfigureEndpoints(context);
     });
     //Memory
-    busConfigurator.UsingInMemory((context,config)=>config.ConfigureEndpoints(context));
+    //busConfigurator.UsingInMemory((context,config)=>config.ConfigureEndpoints(context));
     
     //Sign in Consumer 
     var consumers = typeof(IConsumer).Assembly.GetTypes()
@@ -72,7 +72,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
     //自动迁移
-    app.ApplyMigrations();
+    //app.ApplyMigrations();
 }
 //Carter
 app.MapCarter();

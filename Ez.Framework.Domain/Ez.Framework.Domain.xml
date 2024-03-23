@@ -44,6 +44,41 @@
             <param name="services"></param>
             <returns></returns>
         </member>
+        <member name="T:Ez.Domain.Entities.Article">
+            <summary>
+            Article
+            </summary>
+        </member>
+        <member name="P:Ez.Domain.Entities.Article.ArticleId">
+            <summary>
+            ArticleId
+            </summary>
+        </member>
+        <member name="P:Ez.Domain.Entities.Article.Title">
+            <summary>
+            Title
+            </summary>
+        </member>
+        <member name="P:Ez.Domain.Entities.Article.Content">
+            <summary>
+            Content
+            </summary>
+        </member>
+        <member name="P:Ez.Domain.Entities.Article.Tags">
+            <summary>
+            Tags
+            </summary>
+        </member>
+        <member name="P:Ez.Domain.Entities.Article.CreatedOnUtc">
+            <summary>
+            CreatedOnUtc
+            </summary>
+        </member>
+        <member name="P:Ez.Domain.Entities.Article.PublishedOnUtc">
+            <summary>
+            PublishedOnUtc
+            </summary>
+        </member>
         <member name="T:Ez.Domain.Entities.BaseEntity">
             <summary>
             BaseEntity
@@ -60,6 +95,16 @@
         </member>
         <member name="M:Ez.Domain.Entities.BaseEntity.UnDelete">
             <summary></summary>
+        </member>
+        <member name="T:Ez.Domain.IRepositories.IBaseRepository`1">
+            <summary>
+            IBaseRepository
+            </summary>
+        </member>
+        <member name="T:Ez.Domain.IRepositories.IReadOnlyRepository">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:Ez.Domain.Publishers.MessagePublisher">
             <summary>

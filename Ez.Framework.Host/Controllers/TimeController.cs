@@ -1,21 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Ez.Framework.Controllers;
 
 /// <summary>
-/// 数据测试
+/// TestController
 /// </summary>
 [ApiController]
 [Route("api/[controller]/[action]")]
-public class TestController
+public class TimeController : ControllerBase
 {
     /// <summary>
-    /// Template
+    /// GetTimeNow
     /// </summary>
     /// <returns></returns>
     [HttpGet]
-    public async Task<DateTime> TestMessageAsync()
-    {
-        return DateTime.Now;
-    }
+    public ActionResult GetTimeNow() => Ok(DateTime.Now);
+
 }

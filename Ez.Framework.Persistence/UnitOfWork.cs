@@ -1,9 +1,9 @@
 ﻿namespace Persistence;
 
-internal sealed class UnitOfWork(ApplicationDbContext _dbContext)
+internal sealed class UnitOfWork(ApplicationDbContext dbContext)
 {
     public Task SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        return _dbContext.SaveChangesAsync(cancellationToken);
+        return dbContext.SaveChangesAsync(cancellationToken);
     }
 }

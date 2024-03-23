@@ -4,6 +4,7 @@ using Ez.Application;
 using Ez.Domain;
 using Ez.Domain.Publishers;
 using MassTransit;
+using Microsoft.EntityFrameworkCore;
 using Persistence;
 using IConsumer = Ez.Domain.Consumers.IConsumer;
 
@@ -26,22 +27,26 @@ builder.Services.AddApplication();
 builder.Services.AddDomain();
 builder.Services.AddPersistence(builder.Configuration);
 
+builder.Services.AddDbContext<ApplicationDbContext>(
+    options => options.UseNpgsql(builder.Configuration.GetConnectionString("Database")));
+builder.Services.AddStackExchangeRedisCache(options =>
+    options.Configuration = builder.Configuration.GetConnectionString("Cache"));
 //配置MassTransit
 builder.Services.AddMassTransit(busConfigurator =>
 {
     busConfigurator.SetKebabCaseEndpointNameFormatter();
     //RabbitMq
-    // busConfigurator.UsingRabbitMq((context, configurator) =>
-    // {
-    //     configurator.Host(new Uri(builder.Configuration["MessageBroker:Host"]!), h =>
-    //     {
-    //         h.Username(builder.Configuration["MessageBroker:Username"]);
-    //         h.Password(builder.Configuration["MessageBroker:Password"]);
-    //     });
-    //     configurator.ConfigureEndpoints(context);
-    // });
+    busConfigurator.UsingRabbitMq((context, configurator) =>
+    {
+        configurator.Host(new Uri(builder.Configuration["MessageBroker:Host"]!), h =>
+        {
+            h.Username(builder.Configuration["MessageBroker:Username"]);
+            h.Password(builder.Configuration["MessageBroker:Password"]);
+        });
+        configurator.ConfigureEndpoints(context);
+    });
     //Memory
-    busConfigurator.UsingInMemory((context,config)=>config.ConfigureEndpoints(context));
+    //busConfigurator.UsingInMemory((context,config)=>config.ConfigureEndpoints(context));
     
     //Sign in Consumer 
     var consumers = typeof(IConsumer).Assembly.GetTypes()
@@ -52,19 +57,8 @@ builder.Services.AddMassTransit(busConfigurator =>
     }
 });
 //测试后台运行self-publisher and self-consumer
-builder.Services.AddHostedService<MessagePublisher>();
+//builder.Services.AddHostedService<MessagePublisher>();
 
-#region Cors
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll",
-        builder => builder
-            .SetIsOriginAllowed(_ => true)
-            .AllowAnyMethod()
-            .AllowAnyHeader()
-            .AllowCredentials());
-});
-#endregion
 
 //Carter
 builder.Services.AddCarter();
@@ -76,12 +70,13 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    //自动迁移
+    //app.ApplyMigrations();
 }
-//cors
-app.UseCors("AllowAll");
 //Carter
 app.MapCarter();
 app.UseHttpsRedirection();
+app.MapControllers();
 app.Run();
 
 

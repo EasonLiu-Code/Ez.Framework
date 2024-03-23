@@ -1,4 +1,4 @@
-﻿namespace Ez.Domain;
+﻿namespace Ez.Domain.IRepositories;
 
 /// <summary>
 /// IBaseRepository

@@ -4,5 +4,150 @@
         <name>Ez.Framework.Infrastructure</name>
     </assembly>
     <members>
+        <member name="T:Ez.Infrastructure.Helper.Excel.ExcelHeaderAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Ez.Infrastructure.Helper.Excel.ExcelHeaderAttribute.HeaderName">
+            <summary>
+            导入时，必须与excel的headerName一致
+            </summary>
+        </member>
+        <member name="P:Ez.Infrastructure.Helper.Excel.ExcelHeaderAttribute.ColumnIndex">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="M:Ez.Infrastructure.Helper.Excel.ExcelHeaderAttribute.#ctor">
+            <summary>
+            ctor
+            </summary>
+        </member>
+        <member name="M:Ez.Infrastructure.Helper.Excel.ExcelHeaderAttribute.#ctor(System.String)">
+            <summary>
+            ExcelHeaderAttribute
+            </summary>
+        </member>
+        <member name="T:Ez.Infrastructure.Helper.Excel.ExcelHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Ez.Infrastructure.Helper.Excel.ExcelHelper.ExportExcelToByte">
+            <summary>
+            导出Excel文件，可以是多个sheet【必须在Append()之后调用】
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Ez.Infrastructure.Helper.Excel.ExcelHelper.Append``1(System.Collections.Generic.List{``0},System.String,System.String)">
+            <summary>
+            追加需要导出的Excel文件的sheet【必须与ExportExcelToByte一起使用】
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="sheetTitle"></param>
+            <param name="title">不用传</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ez.Infrastructure.Helper.Excel.ExcelHelper.ExportExcelToByte``1(System.Collections.Generic.List{``0},System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.String)">
+            <summary>
+            导出Excel文件【单个Sheet】
+            </summary>
+            <param name="list"></param>
+            <param name="dicColumn">Excel表头，传入例如：key:Name，value：姓名，为空则根据ExcelHeader属性自动获取</param>
+            <param name="sheetTitle"></param>
+            <param name="title">不用传</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ez.Infrastructure.Helper.Excel.ExcelHelper.GetColumnHeaderDictionary``1(System.Collections.Generic.List{``0},System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            获取Attribute转表头
+            </summary>
+            <param name="list"></param>
+            <param name="dicColumn">Excel表头，传入例如：key:Name，value：姓名，为空则根据ExcelHeader属性自动获取</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ez.Infrastructure.Helper.Excel.ExcelHelper.ReadExcelToDataTable(System.IO.Stream,System.String,System.Boolean)">
+            <summary>
+            读取Excel
+            </summary>
+            <param name="fileStream">文件流</param>
+            <param name="sheetName">指定读取的工作表名称</param>
+            <param name="isFirstRowColumnTitle">第一行是否存在列名</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ez.Infrastructure.Helper.Excel.ExcelHelper.ReadExcelToList``1(System.IO.Stream,System.String)">
+            <summary>
+            读取Excel返回List
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="fileStream"></param>
+            <param name="sheetName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ez.Infrastructure.Helper.Excel.ExcelHelper.HttpDownloadAsync(System.String)">
+            <summary>
+            下载文件
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ez.Infrastructure.Helper.Excel.IExcelHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Ez.Infrastructure.Helper.Excel.IExcelHelper.ExportExcelToByte">
+            <summary>
+            导出Excel文件，可以是多个sheet【必须在Append()之后调用】
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Ez.Infrastructure.Helper.Excel.IExcelHelper.Append``1(System.Collections.Generic.List{``0},System.String,System.String)">
+            <summary>
+            追加需要导出的Excel文件的sheet【必须与ExportExcelToByte()一起使用】
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="sheetTitle"></param>
+            <param name="title">不用传</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ez.Infrastructure.Helper.Excel.IExcelHelper.ExportExcelToByte``1(System.Collections.Generic.List{``0},System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.String)">
+            <summary>
+            导出Excel文件【单个Sheet】
+            </summary>
+            <param name="list"></param>
+            <param name="dicColumn">Excel表头，传入例如：key:Name，value：姓名，为空则根据ExcelHeader属性自动获取</param>
+            <param name="sheetTitle"></param>
+            <param name="title">不用传</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ez.Infrastructure.Helper.Excel.IExcelHelper.ReadExcelToDataTable(System.IO.Stream,System.String,System.Boolean)">
+            <summary>
+            读取Excel
+            </summary>
+            <param name="fileStream">文件流</param>
+            <param name="sheetName">指定读取的工作表名称</param>
+            <param name="isFirstRowColumnTitle">第一行是否存在列名</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ez.Infrastructure.Helper.Excel.IExcelHelper.ReadExcelToList``1(System.IO.Stream,System.String)">
+            <summary>
+            读取Excel返回List
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="fileStream"></param>
+            <param name="sheetName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ez.Infrastructure.Helper.Excel.IExcelHelper.HttpDownloadAsync(System.String)">
+            <summary>
+            下载
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

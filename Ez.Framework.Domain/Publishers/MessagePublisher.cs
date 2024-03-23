@@ -26,7 +26,7 @@ public class MessagePublisher(IBus bus):BackgroundService
                    DateTime = DateTime.Now
                 }, stoppingToken);
             Console.WriteLine("Current Publisher is Succeed!!!!!!!!!!!!!!!");
-            await Task.Delay(TimeSpan.FromMinutes(1), stoppingToken);
+            await Task.Delay(TimeSpan.FromHours(1), stoppingToken);
         }
     }
 }

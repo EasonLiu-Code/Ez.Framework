@@ -6,6 +6,7 @@ using Ez.Domain.Publishers;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
+using Persistence.Migrations;
 using IConsumer = Ez.Domain.Consumers.IConsumer;
 
 SetThreadPool();
@@ -46,7 +47,7 @@ builder.Services.AddMassTransit(busConfigurator =>
         configurator.ConfigureEndpoints(context);
     });
     //Memory
-    //busConfigurator.UsingInMemory((context,config)=>config.ConfigureEndpoints(context));
+    busConfigurator.UsingInMemory((context,config)=>config.ConfigureEndpoints(context));
     
     //Sign in Consumer 
     var consumers = typeof(IConsumer).Assembly.GetTypes()
@@ -57,7 +58,7 @@ builder.Services.AddMassTransit(busConfigurator =>
     }
 });
 //测试后台运行self-publisher and self-consumer
-//builder.Services.AddHostedService<MessagePublisher>();
+builder.Services.AddHostedService<MessagePublisher>();
 
 
 //Carter
@@ -71,7 +72,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
     //自动迁移
-    //app.ApplyMigrations();
+    app.ApplyMigrations();
 }
 //Carter
 app.MapCarter();

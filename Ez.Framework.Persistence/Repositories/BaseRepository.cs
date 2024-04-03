@@ -1,6 +1,5 @@
 ﻿using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
-using Ez.Domain;
 using Ez.Domain.Entities;
 using Ez.Domain.IRepositories;
 using Microsoft.EntityFrameworkCore;

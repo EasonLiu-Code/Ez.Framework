@@ -4,7 +4,6 @@ using Ez.Application;
 using Ez.Domain;
 using Ez.Domain.Publishers;
 using MassTransit;
-using Microsoft.EntityFrameworkCore;
 using Persistence;
 using Persistence.Migrations;
 using IConsumer = Ez.Domain.Consumers.IConsumer;
@@ -27,9 +26,6 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddApplication();
 builder.Services.AddDomain();
 builder.Services.AddPersistence(builder.Configuration);
-
-builder.Services.AddDbContext<ApplicationDbContext>(
-    options => options.UseNpgsql(builder.Configuration.GetConnectionString("Database")));
 builder.Services.AddStackExchangeRedisCache(options =>
     options.Configuration = builder.Configuration.GetConnectionString("Cache"));
 //配置MassTransit
@@ -72,7 +68,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
     //自动迁移
-    //app.ApplyMigrations();
+    app.ApplyMigrations();
 }
 //Carter
 app.MapCarter();

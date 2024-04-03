@@ -1,17 +1,14 @@
 ﻿using Ez.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Persistence;
 
-public  class ApplicationDbContext:DbContext
+public sealed class ApplicationDbContext(IConfiguration configuration) : DbContext
 {
-    /// <summary>
-    /// ctor
-    /// </summary>
-    /// <param name="options"></param>
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext>options):base(options)
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        
+        optionsBuilder.UseNpgsql(configuration.GetConnectionString("DataBase"));
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -19,5 +16,5 @@ public  class ApplicationDbContext:DbContext
             .Property(e => e.IsDeleted)
             .HasDefaultValue(false);
     }
-    public DbSet<Article> Article { get; set; }
+    public DbSet<Article> Articles { get; set; }
 }

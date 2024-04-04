@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Ez.Application.AppServices;
+using Ez.Application.IAppServices;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Ez.Application;
 
@@ -14,6 +16,7 @@ public static class DependencyInjection
     /// <returns></returns>
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
+        services.AddScoped<IArticleAppService, ArticleAppService>();
         return services;
     }
 }

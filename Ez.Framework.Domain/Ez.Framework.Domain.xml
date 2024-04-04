@@ -96,10 +96,92 @@
         <member name="M:Ez.Domain.Entities.BaseEntity.UnDelete">
             <summary></summary>
         </member>
+        <member name="T:Ez.Domain.IRepositories.IArticleRepository">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:Ez.Domain.IRepositories.IBaseRepository`1">
             <summary>
             IBaseRepository
             </summary>
+        </member>
+        <member name="M:Ez.Domain.IRepositories.IBaseRepository`1.FirstOrDefaultAsNoTrackingAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Threading.CancellationToken)">
+            <summary>
+            FirstOrDefaultAsNoTrackingAsync
+            </summary>
+            <param name="func"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ez.Domain.IRepositories.IBaseRepository`1.GetAllListAsNoTrackingAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Threading.CancellationToken)">
+            <summary>
+            GetAllListAsNoTrackingAsync
+            </summary>
+            <param name="func"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ez.Domain.IRepositories.IBaseRepository`1.GetListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Threading.CancellationToken)">
+            <summary>
+            GetListAsync
+            </summary>
+            <param name="predicate"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ez.Domain.IRepositories.IBaseRepository`1.InsertAsync(`0,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            InsertAsync
+            </summary>
+            <param name="entity"></param>
+            <param name="autoSave"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ez.Domain.IRepositories.IBaseRepository`1.InsertManyAsync(System.Collections.Generic.IEnumerable{`0},System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            InsertManyAsync
+            </summary>
+            <param name="entities"></param>
+            <param name="autoSave"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ez.Domain.IRepositories.IBaseRepository`1.UpdateAsync(`0,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            UpdateAsync
+            </summary>
+            <param name="entity"></param>
+            <param name="autoSave"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ez.Domain.IRepositories.IBaseRepository`1.UpdateManyAsync(System.Collections.Generic.IEnumerable{`0},System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            UpdateManyAsync
+            </summary>
+            <param name="entities"></param>
+            <param name="autoSave"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ez.Domain.IRepositories.IBaseRepository`1.ExecuteUpdateAsync(System.Func{`0,`0},System.Func{`0,`0},System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            ExecuteUpdateAsync
+            </summary>
+            <param name="propertyExpression"></param>
+            <param name="valueExpression"></param>
+            <param name="autoSave"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ez.Domain.IRepositories.IBaseRepository`1.SaveChangesAsync(System.Threading.CancellationToken)">
+            <summary>
+            SaveChangesAsync
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
         </member>
         <member name="T:Ez.Domain.IRepositories.IReadOnlyRepository">
             <summary>

@@ -23,6 +23,7 @@ public class ArticleAppService(IArticleRepository articleRepository):IArticleApp
             PublishedOnUtc = DateTime.UtcNow.Date
         };
         await articleRepository.InsertAsync(article);
+        await articleRepository.SaveChangesAsync();
     }
     
     /// <summary>

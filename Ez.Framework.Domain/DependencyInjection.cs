@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Ez.Domain.IRepositories;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Ez.Domain;
 

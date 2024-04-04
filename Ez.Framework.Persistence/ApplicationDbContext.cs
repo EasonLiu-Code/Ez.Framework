@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Persistence;
 
-public sealed class ApplicationDbContext(IConfiguration configuration) : DbContext
+public sealed class ApplicationDbContext(IConfiguration configuration) : DbContext, IApplicationDbContext
 {
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

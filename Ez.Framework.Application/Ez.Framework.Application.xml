@@ -4,6 +4,28 @@
         <name>Ez.Framework.Application</name>
     </assembly>
     <members>
+        <member name="T:Ez.Application.AppServices.ArticleAppService">
+            <summary>
+            ArticleAppService
+            </summary>
+        </member>
+        <member name="M:Ez.Application.AppServices.ArticleAppService.#ctor(Ez.Domain.IRepositories.IArticleRepository)">
+            <summary>
+            ArticleAppService
+            </summary>
+        </member>
+        <member name="M:Ez.Application.AppServices.ArticleAppService.InsertDataAsync">
+            <summary>
+            insertData
+            </summary>
+        </member>
+        <member name="M:Ez.Application.AppServices.ArticleAppService.GetArticleAsync(System.Guid)">
+            <summary>
+            GetArticleAsync
+            </summary>
+            <param name="articleId"></param>
+            <returns></returns>
+        </member>
         <member name="T:Ez.Application.DependencyInjection">
             <summary>
             DependencyInjection
@@ -14,6 +36,24 @@
             AddApplication
             </summary>
             <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ez.Application.IAppServices.IArticleAppService">
+            <summary>
+            IArticleAppService
+            </summary>
+        </member>
+        <member name="M:Ez.Application.IAppServices.IArticleAppService.InsertDataAsync">
+            <summary>
+            InsertDataAsync
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Ez.Application.IAppServices.IArticleAppService.GetArticleAsync(System.Guid)">
+            <summary>
+            GetArticleAsync
+            </summary>
+            <param name="articleId"></param>
             <returns></returns>
         </member>
     </members>

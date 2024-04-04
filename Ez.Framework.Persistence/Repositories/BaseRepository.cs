@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.Repositories;
 
-internal abstract class BaseRepository<TEntity>(ApplicationDbContext dbContext):IBaseRepository<TEntity> where TEntity:BaseEntity
+public  class BaseRepository<TEntity>(ApplicationDbContext dbContext):IBaseRepository<TEntity> where TEntity:BaseEntity
 {
     public async Task<TEntity?> FirstOrDefaultAsNoTrackingAsync(
         Expression<Func<TEntity?, bool>> func,

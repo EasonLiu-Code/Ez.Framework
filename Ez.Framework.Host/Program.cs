@@ -68,7 +68,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
     //自动迁移
-    app.ApplyMigrations();
+    //app.ApplyMigrations();
 }
 //Carter
 app.MapCarter();

@@ -3,7 +3,7 @@ using Ez.Domain.IRepositories;
 
 namespace Persistence.Repositories;
 
-internal abstract  class ArticleRepository(ApplicationDbContext dbContext) :BaseRepository<Article>(dbContext),IArticleRepository
+public  class ArticleRepository(ApplicationDbContext dbContext) :BaseRepository<Article>(dbContext),IArticleRepository
 {
 
 }

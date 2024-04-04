@@ -104,6 +104,6 @@ public interface IBaseRepository<TEntity>
     /// </summary>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task SaveChangesAsync(CancellationToken cancellationToken);
+    Task SaveChangesAsync(CancellationToken cancellationToken=default);
 
 }

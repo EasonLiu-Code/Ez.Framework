@@ -8,7 +8,9 @@ namespace Ez.Framework.Controllers;
 /// <summary>
 /// ArticleController
 /// </summary>
-public class ArticleController(IArticleAppService articleAppService):Controller
+[ApiController]
+[Route("api/[controller]/[action]")]
+public class ArticleController(IArticleAppService articleAppService):ControllerBase
 {
     /// <summary>
     /// InsertDataAsync

@@ -1,0 +1,47 @@
+﻿services:
+  ez.framework.host:
+    image: ez.framework.host
+    build:
+      context: .
+      dockerfile: Ez.Framework.Host/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=9000
+    ports:
+        - "9000:9000"
+      
+    volumes:
+      - $HOME/Library/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - $HOME/Library/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+      
+  ez.framework.database:
+    image: postgres:latest
+    container_name: ez.framework.database
+    environment:
+      - POSTGRES_DB=ez.framework
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+  
+  ez.framework.cache:
+    image: redis:latest
+    restart: always
+    ports:
+      - '6379:6379'
+        
+  ez.framework.rabbitmq:
+    image: "rabbitmq:3-management"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - ./rabbitmq_data:/var/lib/rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+

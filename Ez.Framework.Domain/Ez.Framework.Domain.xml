@@ -183,11 +183,6 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="T:Ez.Domain.IRepositories.IReadOnlyRepository">
-            <summary>
-            
-            </summary>
-        </member>
         <member name="T:Ez.Domain.Publishers.MessagePublisher">
             <summary>
             MessagePublisher

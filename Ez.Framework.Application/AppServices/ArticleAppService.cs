@@ -22,8 +22,8 @@ public class ArticleAppService(IArticleRepository articleRepository):IArticleApp
             ArticleId = Guid.NewGuid(),
             PublishedOnUtc = DateTime.UtcNow.Date
         };
-        await articleRepository.InsertAsync(article);
-        await articleRepository.SaveChangesAsync();
+         await articleRepository.InsertAsync(article);
+         await articleRepository.SaveChangesAsync();
     }
     
     /// <summary>
@@ -33,6 +33,7 @@ public class ArticleAppService(IArticleRepository articleRepository):IArticleApp
     /// <returns></returns>
     public async Task<Article> GetArticleAsync(Guid articleId)
     {
-        return await articleRepository.FirstOrDefaultAsNoTrackingAsync(x => x.ArticleId == articleId);
+        //return await articleRepository.FirstOrDefaultAsNoTrackingAsync(x => x.ArticleId == articleId);
+        return default;
     }
 }

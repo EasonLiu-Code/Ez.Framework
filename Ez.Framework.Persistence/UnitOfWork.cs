@@ -1,4 +1,6 @@
-﻿namespace Persistence;
+﻿using Persistence.AppDbContext;
+
+namespace Persistence;
 
 internal sealed class UnitOfWork(ApplicationDbContext dbContext)
 {

@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using Ez.Domain.Entities;
 using Ez.Domain.IRepositories;
 using Microsoft.EntityFrameworkCore;
+using Persistence.AppDbContext;
 
 namespace Persistence.Repositories;
 

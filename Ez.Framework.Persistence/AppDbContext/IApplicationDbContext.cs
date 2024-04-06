@@ -1,6 +1,7 @@
-namespace Persistence;
+
+
+namespace Persistence.AppDbContext;
 
 public  interface IApplicationDbContext
 {
-    
 }

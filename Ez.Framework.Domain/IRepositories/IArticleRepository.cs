@@ -5,7 +5,6 @@ namespace Ez.Domain.IRepositories;
 /// <summary>
 /// 
 /// </summary>
-public interface IArticleRepository:IBaseRepository<Article>
+public interface IArticleRepository: IBaseRepository<Article>
 {
-    
 }

@@ -2,10 +2,13 @@
 using Carter;
 using Ez.Application;
 using Ez.Domain;
+using Ez.Domain.IRepositories;
 using Ez.Domain.Publishers;
 using MassTransit;
+using Microsoft.EntityFrameworkCore;
 using Persistence;
-using Persistence.Migrations;
+using Persistence.AppDbContext;
+using Persistence.Repositories;
 using IConsumer = Ez.Domain.Consumers.IConsumer;
 
 SetThreadPool();
@@ -23,9 +26,9 @@ builder.Services.AddSwaggerGen(c =>
     var path = Path.Combine(AppContext.BaseDirectory, file);
     c.IncludeXmlComments(path ,true);
 });
-builder.Services.AddApplication();
-builder.Services.AddDomain();
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddDomain();
+builder.Services.AddApplication();
 builder.Services.AddStackExchangeRedisCache(options =>
     options.Configuration = builder.Configuration.GetConnectionString("Cache"));
 //配置MassTransit

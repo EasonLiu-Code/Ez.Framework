@@ -14,6 +14,18 @@
             DateTime
             </summary>
         </member>
+        <member name="T:Ez.Domain.DependencyInjection">
+            <summary>
+            DependencyInjection
+            </summary>
+        </member>
+        <member name="M:Ez.Domain.DependencyInjection.AddDomain(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            AddDomain
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
         <member name="T:Ez.Domain.Consumers.IConsumer">
             <summary>
             Mark
@@ -32,17 +44,23 @@
             <returns></returns>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="T:Ez.Domain.DependencyInjection">
+        <member name="T:Ez.Domain.Publishers.MessagePublisher">
             <summary>
-            DependencyInjection
+            MessagePublisher
             </summary>
         </member>
-        <member name="M:Ez.Domain.DependencyInjection.AddDomain(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+        <member name="M:Ez.Domain.Publishers.MessagePublisher.#ctor(MassTransit.IBus)">
             <summary>
-            AddDomain
+            MessagePublisher
             </summary>
-            <param name="services"></param>
+        </member>
+        <member name="M:Ez.Domain.Publishers.MessagePublisher.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            
+            </summary>
+            <param name="stoppingToken"></param>
             <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="T:Ez.Domain.Entities.Article">
             <summary>
@@ -182,24 +200,6 @@
             </summary>
             <param name="cancellationToken"></param>
             <returns></returns>
-        </member>
-        <member name="T:Ez.Domain.Publishers.MessagePublisher">
-            <summary>
-            MessagePublisher
-            </summary>
-        </member>
-        <member name="M:Ez.Domain.Publishers.MessagePublisher.#ctor(MassTransit.IBus)">
-            <summary>
-            MessagePublisher
-            </summary>
-        </member>
-        <member name="M:Ez.Domain.Publishers.MessagePublisher.ExecuteAsync(System.Threading.CancellationToken)">
-            <summary>
-            
-            </summary>
-            <param name="stoppingToken"></param>
-            <returns></returns>
-            <exception cref="T:System.NotImplementedException"></exception>
         </member>
     </members>
 </doc>

@@ -91,19 +91,6 @@ public  class BaseRepository<TEntity>(ApplicationDbContext dbContext):IBaseRepos
         await this.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task ExecuteUpdateAsync(
-        Func<TEntity, TEntity> propertyExpression,
-        Func<TEntity, TEntity> valueExpression,
-        bool autoSave = false,
-        CancellationToken cancellationToken = default)
-    {
-        await dbContext.Set<TEntity>().ExecuteUpdateAsync(s=>
-            s.SetProperty(propertyExpression,valueExpression), cancellationToken: cancellationToken);
-        if (!autoSave)
-            return;
-        await this.SaveChangesAsync(cancellationToken);
-    }
-
     public  async Task<TEntity?> InsertOrUpdateAsync(
         TEntity entity,
         bool autoSave = false,

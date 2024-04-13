@@ -86,20 +86,6 @@ public interface IBaseRepository<TEntity>
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// ExecuteUpdateAsync
-    /// </summary>
-    /// <param name="propertyExpression"></param>
-    /// <param name="valueExpression"></param>
-    /// <param name="autoSave"></param>
-    /// <param name="cancellationToken"></param>
-    /// <returns></returns>
-    Task ExecuteUpdateAsync(
-        Func<TEntity, TEntity> propertyExpression,
-        Func<TEntity, TEntity> valueExpression,
-        bool autoSave = false,
-        CancellationToken cancellationToken = default);
-
-    /// <summary>
     /// SaveChangesAsync
     /// </summary>
     /// <param name="cancellationToken"></param>

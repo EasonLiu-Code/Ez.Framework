@@ -26,4 +26,8 @@
       <Folder Include="DistributeEventsHandle\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Ez.Framework.Infrastructure\Ez.Framework.Infrastructure.csproj" />
+    </ItemGroup>
+
 </Project>

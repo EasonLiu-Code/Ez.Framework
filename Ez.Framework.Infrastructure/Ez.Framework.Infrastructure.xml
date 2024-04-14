@@ -4,6 +4,16 @@
         <name>Ez.Framework.Infrastructure</name>
     </assembly>
     <members>
+        <member name="T:Ez.Infrastructure.DependencyInjection">
+            <summary></summary>
+        </member>
+        <member name="M:Ez.Infrastructure.DependencyInjection.AddInfrastructure(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
         <member name="T:Ez.Infrastructure.Helper.Excel.ExcelHeaderAttribute">
             <summary>
             
@@ -148,6 +158,72 @@
             </summary>
             <param name="url"></param>
             <returns></returns>
+        </member>
+        <member name="T:Ez.Infrastructure.LocalEventExtension.IIntegrationEvent">
+            <summary></summary>
+        </member>
+        <member name="P:Ez.Infrastructure.LocalEventExtension.IIntegrationEvent.Id">
+            <summary></summary>
+        </member>
+        <member name="T:Ez.Infrastructure.LocalEventExtension.ILocalEvent">
+            <summary></summary>
+        </member>
+        <member name="M:Ez.Infrastructure.LocalEventExtension.ILocalEvent.PublishAsync``1(``0,System.Threading.CancellationToken)">
+            <summary>
+            PublishAsync
+            </summary>
+            <param name="integrationEvent"></param>
+            <param name="cancellationToken"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Ez.Infrastructure.LocalEventExtension.InMemoryMessageQueue">
+            <summary></summary>
+        </member>
+        <member name="T:Ez.Infrastructure.LocalEventExtension.IntegrationEvent">
+            <summary></summary>
+        </member>
+        <member name="M:Ez.Infrastructure.LocalEventExtension.IntegrationEvent.#ctor(System.Guid)">
+            <summary></summary>
+        </member>
+        <member name="P:Ez.Infrastructure.LocalEventExtension.IntegrationEvent.Id">
+            <summary></summary>
+        </member>
+        <member name="T:Ez.Infrastructure.LocalEventExtension.IntegrationEventProcessor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Ez.Infrastructure.LocalEventExtension.IntegrationEventProcessor.#ctor(Ez.Infrastructure.LocalEventExtension.InMemoryMessageQueue,MediatR.IPublisher,Microsoft.Extensions.Logging.ILogger{Ez.Infrastructure.LocalEventExtension.IntegrationEventProcessor})">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Ez.Infrastructure.LocalEventExtension.LocalEvent">
+            <summary></summary>
+        </member>
+        <member name="M:Ez.Infrastructure.LocalEventExtension.LocalEvent.#ctor(Ez.Infrastructure.LocalEventExtension.InMemoryMessageQueue)">
+            <summary></summary>
+        </member>
+        <member name="M:Ez.Infrastructure.LocalEventExtension.LocalEvent.PublishAsync``1(``0,System.Threading.CancellationToken)">
+            <summary>
+            PublishAsync
+            </summary>
+            <param name="integrationEvent"></param>
+            <param name="cancellationToken"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:Ez.Infrastructure.RedisHelper.DistributedLock">
+            <summary>
+            DistributedLock
+            </summary>
+        </member>
+        <member name="T:Ez.Infrastructure.RedisHelper.IDistributedLock">
+            <summary>
+            IDistributedLock
+            </summary>
         </member>
     </members>
 </doc>

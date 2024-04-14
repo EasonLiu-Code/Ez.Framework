@@ -23,7 +23,7 @@
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data
+      - ./data/postgres_data:/var/lib/postgresql/data
     ports:
       - 5432:5432
   
@@ -39,7 +39,7 @@
       - "5672:5672"
       - "15672:15672"
     volumes:
-      - ./rabbitmq_data:/var/lib/rabbitmq
+      - ./data/rabbitmq_data:/var/lib/rabbitmq
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest

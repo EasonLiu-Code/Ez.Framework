@@ -1,6 +1,6 @@
 ﻿
 using Ez.Application.IAppServices;
-using Ez.Domain.Entities;
+using Ez.Domain.DomainBusiness.ArticleBusiness.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ez.Framework.Controllers;

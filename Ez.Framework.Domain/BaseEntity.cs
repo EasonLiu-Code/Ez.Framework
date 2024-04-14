@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Ez.Domain.Entities;
+namespace Ez.Domain;
 
 /// <summary>
 /// BaseEntity

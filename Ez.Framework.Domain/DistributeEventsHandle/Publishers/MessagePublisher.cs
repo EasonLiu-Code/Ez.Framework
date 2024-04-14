@@ -1,9 +1,8 @@
-﻿using Ez.Domain.CommonDtos;
-using Ez.Domain.CommonDtos.Events;
+﻿using Ez.Domain.CommonDto.Events;
 using MassTransit;
 using Microsoft.Extensions.Hosting;
 
-namespace Ez.Domain.Publishers;
+namespace Ez.Domain.DistributeEventsHandle.Publishers;
 
 /// <summary>
 /// MessagePublisher

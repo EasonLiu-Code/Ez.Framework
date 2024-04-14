@@ -9,7 +9,7 @@
             ArticleAppService
             </summary>
         </member>
-        <member name="M:Ez.Application.AppServices.ArticleAppService.#ctor(Ez.Domain.IRepositories.IArticleRepository)">
+        <member name="M:Ez.Application.AppServices.ArticleAppService.#ctor(Ez.Domain.IRepositories.IArticleRepository,Ez.Domain.DomainBusiness.ArticleBusiness.Business.ArticleManager)">
             <summary>
             ArticleAppService
             </summary>

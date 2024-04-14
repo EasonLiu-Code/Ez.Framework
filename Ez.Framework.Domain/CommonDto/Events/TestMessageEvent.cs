@@ -1,4 +1,4 @@
-﻿namespace Ez.Domain.CommonDtos.Events;
+﻿namespace Ez.Domain.CommonDto.Events;
 
 /// <summary>
 /// TestMessageEvent

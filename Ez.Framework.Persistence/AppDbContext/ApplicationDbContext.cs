@@ -1,4 +1,4 @@
-﻿using Ez.Domain.Entities;
+﻿using Ez.Domain.DomainBusiness.ArticleBusiness.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.AppDbContext;

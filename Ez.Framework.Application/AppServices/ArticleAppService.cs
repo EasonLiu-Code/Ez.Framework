@@ -1,29 +1,24 @@
 ﻿using Ez.Application.IAppServices;
-using Ez.Domain.Entities;
+using Ez.Domain.DomainBusiness.ArticleBusiness.Business;
+using Ez.Domain.DomainBusiness.ArticleBusiness.Entities;
 using Ez.Domain.IRepositories;
+using Ez.Infrastructure.LocalEventExtension;
+
 namespace Ez.Application.AppServices;
 
 /// <summary>
 /// ArticleAppService
 /// </summary>
-public class ArticleAppService(IArticleRepository articleRepository):IArticleAppService
+public class ArticleAppService(
+    IArticleRepository articleRepository,
+    ArticleManager articleManager):IArticleAppService
 {
     /// <summary>
     /// insertData
     /// </summary>
     public async Task InsertDataAsync()
     {
-        var article = new Article
-        {
-            Title = "test",
-            Content = "test",
-            CreatedOnUtc= DateTime.UtcNow.Date,
-            Tags = new List<string> {"test"},
-            ArticleId = Guid.NewGuid(),
-            PublishedOnUtc = DateTime.UtcNow.Date
-        };
-         await articleRepository.InsertAsync(article);
-         await articleRepository.SaveChangesAsync();
+        await articleManager.InsertDataAsync();
     }
     
     /// <summary>
@@ -33,7 +28,6 @@ public class ArticleAppService(IArticleRepository articleRepository):IArticleApp
     /// <returns></returns>
     public async Task<Article> GetArticleAsync(Guid articleId)
     {
-        //return await articleRepository.FirstOrDefaultAsNoTrackingAsync(x => x.ArticleId == articleId);
-        return default;
+        return await articleRepository.FirstOrDefaultAsNoTrackingAsync(x => x.ArticleId.Equals(articleId));
     }
 }

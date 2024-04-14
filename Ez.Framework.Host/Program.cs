@@ -2,14 +2,16 @@
 using Carter;
 using Ez.Application;
 using Ez.Domain;
+using Ez.Domain.DistributeEventsHandle.Publishers;
 using Ez.Domain.IRepositories;
-using Ez.Domain.Publishers;
+using Ez.Infrastructure;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 using Persistence.AppDbContext;
+using Persistence.Migrations;
 using Persistence.Repositories;
-using IConsumer = Ez.Domain.Consumers.IConsumer;
+using IConsumer = Ez.Domain.DistributeEventsHandle.Consumers.IConsumer;
 
 SetThreadPool();
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +29,7 @@ builder.Services.AddSwaggerGen(c =>
     c.IncludeXmlComments(path ,true);
 });
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddInfrastructure();
 builder.Services.AddDomain();
 builder.Services.AddApplication();
 builder.Services.AddStackExchangeRedisCache(options =>
@@ -71,7 +74,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
     //自动迁移
-    //app.ApplyMigrations();
+    app.ApplyMigrations();
 }
 //Carter
 app.MapCarter();

@@ -1,4 +1,4 @@
-﻿namespace Ez.Domain.Consumers;
+﻿namespace Ez.Domain.DistributeEventsHandle.Consumers;
 
 /// <summary>
 /// Mark

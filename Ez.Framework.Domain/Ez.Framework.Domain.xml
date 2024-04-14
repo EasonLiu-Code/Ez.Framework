@@ -4,15 +4,52 @@
         <name>Ez.Framework.Domain</name>
     </assembly>
     <members>
-        <member name="T:Ez.Domain.CommonDtos.Events.TestMessageEvent">
+        <member name="T:Ez.Domain.BaseEntity">
+            <summary>
+            BaseEntity
+            </summary>
+        </member>
+        <member name="P:Ez.Domain.BaseEntity.Id">
+            <summary> 主键 </summary>
+        </member>
+        <member name="P:Ez.Domain.BaseEntity.IsDeleted">
+            <summary>是否删除</summary>
+        </member>
+        <member name="M:Ez.Domain.BaseEntity.Delete">
+            <summary></summary>
+        </member>
+        <member name="M:Ez.Domain.BaseEntity.UnDelete">
+            <summary></summary>
+        </member>
+        <member name="T:Ez.Domain.CommonDto.Events.ArticleInsertEvent">
+            <summary>
+            </summary>
+            <param name="Id"></param>
+        </member>
+        <member name="M:Ez.Domain.CommonDto.Events.ArticleInsertEvent.#ctor(System.Guid)">
+            <summary>
+            </summary>
+            <param name="Id"></param>
+        </member>
+        <member name="T:Ez.Domain.CommonDto.Events.TestMessageEvent">
             <summary>
             TestMessageEvent
             </summary>
         </member>
-        <member name="P:Ez.Domain.CommonDtos.Events.TestMessageEvent.DateTime">
+        <member name="P:Ez.Domain.CommonDto.Events.TestMessageEvent.DateTime">
             <summary>
             DateTime
             </summary>
+        </member>
+        <member name="T:Ez.Domain.CommonDto.Handlers.ArticleInsertHandler">
+            <summary></summary>
+        </member>
+        <member name="M:Ez.Domain.CommonDto.Handlers.ArticleInsertHandler.Handle(Ez.Domain.CommonDto.Events.ArticleInsertEvent,System.Threading.CancellationToken)">
+            <summary>
+            Handle
+            </summary>
+            <param name="notification"></param>
+            <param name="cancellationToken"></param>
         </member>
         <member name="T:Ez.Domain.DependencyInjection">
             <summary>
@@ -26,17 +63,17 @@
             <param name="services"></param>
             <returns></returns>
         </member>
-        <member name="T:Ez.Domain.Consumers.IConsumer">
+        <member name="T:Ez.Domain.DistributeEventsHandle.Consumers.IConsumer">
             <summary>
             Mark
             </summary>
         </member>
-        <member name="T:Ez.Domain.Consumers.TestConsumer">
+        <member name="T:Ez.Domain.DistributeEventsHandle.Consumers.TestConsumer">
             <summary>
             Consumer
             </summary>
         </member>
-        <member name="M:Ez.Domain.Consumers.TestConsumer.Consume(MassTransit.ConsumeContext{Ez.Domain.CommonDtos.Events.TestMessageEvent})">
+        <member name="M:Ez.Domain.DistributeEventsHandle.Consumers.TestConsumer.Consume(MassTransit.ConsumeContext{Ez.Domain.CommonDto.Events.TestMessageEvent})">
             <summary>
             Consume
             </summary>
@@ -44,17 +81,17 @@
             <returns></returns>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="T:Ez.Domain.Publishers.MessagePublisher">
+        <member name="T:Ez.Domain.DistributeEventsHandle.Publishers.MessagePublisher">
             <summary>
             MessagePublisher
             </summary>
         </member>
-        <member name="M:Ez.Domain.Publishers.MessagePublisher.#ctor(MassTransit.IBus)">
+        <member name="M:Ez.Domain.DistributeEventsHandle.Publishers.MessagePublisher.#ctor(MassTransit.IBus)">
             <summary>
             MessagePublisher
             </summary>
         </member>
-        <member name="M:Ez.Domain.Publishers.MessagePublisher.ExecuteAsync(System.Threading.CancellationToken)">
+        <member name="M:Ez.Domain.DistributeEventsHandle.Publishers.MessagePublisher.ExecuteAsync(System.Threading.CancellationToken)">
             <summary>
             
             </summary>
@@ -62,57 +99,55 @@
             <returns></returns>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="T:Ez.Domain.Entities.Article">
+        <member name="T:Ez.Domain.DomainBusiness.ArticleBusiness.Business.ArticleManager">
+            <summary>
+            ArticleManager
+            </summary>
+        </member>
+        <member name="M:Ez.Domain.DomainBusiness.ArticleBusiness.Business.ArticleManager.#ctor(Ez.Domain.IRepositories.IArticleRepository,Ez.Infrastructure.LocalEventExtension.ILocalEvent)">
+            <summary>
+            ArticleManager
+            </summary>
+        </member>
+        <member name="M:Ez.Domain.DomainBusiness.ArticleBusiness.Business.ArticleManager.InsertDataAsync(System.Threading.CancellationToken)">
+            <summary>
+            InsertDataAsync
+            </summary>
+        </member>
+        <member name="T:Ez.Domain.DomainBusiness.ArticleBusiness.Entities.Article">
             <summary>
             Article
             </summary>
         </member>
-        <member name="P:Ez.Domain.Entities.Article.ArticleId">
+        <member name="P:Ez.Domain.DomainBusiness.ArticleBusiness.Entities.Article.ArticleId">
             <summary>
             ArticleId
             </summary>
         </member>
-        <member name="P:Ez.Domain.Entities.Article.Title">
+        <member name="P:Ez.Domain.DomainBusiness.ArticleBusiness.Entities.Article.Title">
             <summary>
             Title
             </summary>
         </member>
-        <member name="P:Ez.Domain.Entities.Article.Content">
+        <member name="P:Ez.Domain.DomainBusiness.ArticleBusiness.Entities.Article.Content">
             <summary>
             Content
             </summary>
         </member>
-        <member name="P:Ez.Domain.Entities.Article.Tags">
+        <member name="P:Ez.Domain.DomainBusiness.ArticleBusiness.Entities.Article.Tags">
             <summary>
             Tags
             </summary>
         </member>
-        <member name="P:Ez.Domain.Entities.Article.CreatedOnUtc">
+        <member name="P:Ez.Domain.DomainBusiness.ArticleBusiness.Entities.Article.CreatedOnUtc">
             <summary>
             CreatedOnUtc
             </summary>
         </member>
-        <member name="P:Ez.Domain.Entities.Article.PublishedOnUtc">
+        <member name="P:Ez.Domain.DomainBusiness.ArticleBusiness.Entities.Article.PublishedOnUtc">
             <summary>
             PublishedOnUtc
             </summary>
-        </member>
-        <member name="T:Ez.Domain.Entities.BaseEntity">
-            <summary>
-            BaseEntity
-            </summary>
-        </member>
-        <member name="P:Ez.Domain.Entities.BaseEntity.Id">
-            <summary> 主键 </summary>
-        </member>
-        <member name="P:Ez.Domain.Entities.BaseEntity.IsDeleted">
-            <summary>是否删除</summary>
-        </member>
-        <member name="M:Ez.Domain.Entities.BaseEntity.Delete">
-            <summary></summary>
-        </member>
-        <member name="M:Ez.Domain.Entities.BaseEntity.UnDelete">
-            <summary></summary>
         </member>
         <member name="T:Ez.Domain.IRepositories.IArticleRepository">
             <summary>
@@ -180,16 +215,6 @@
             UpdateManyAsync
             </summary>
             <param name="entities"></param>
-            <param name="autoSave"></param>
-            <param name="cancellationToken"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Ez.Domain.IRepositories.IBaseRepository`1.ExecuteUpdateAsync(System.Func{`0,`0},System.Func{`0,`0},System.Boolean,System.Threading.CancellationToken)">
-            <summary>
-            ExecuteUpdateAsync
-            </summary>
-            <param name="propertyExpression"></param>
-            <param name="valueExpression"></param>
             <param name="autoSave"></param>
             <param name="cancellationToken"></param>
             <returns></returns>

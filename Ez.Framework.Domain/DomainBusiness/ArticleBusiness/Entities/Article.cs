@@ -1,4 +1,4 @@
-﻿namespace Ez.Domain.Entities;
+﻿namespace Ez.Domain.DomainBusiness.ArticleBusiness.Entities;
 
 /// <summary>
 /// Article

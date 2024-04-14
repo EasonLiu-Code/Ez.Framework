@@ -24,6 +24,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Ez.Framework.Domain\Ez.Framework.Domain.csproj" />
+      <ProjectReference Include="..\Ez.Framework.Infrastructure\Ez.Framework.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

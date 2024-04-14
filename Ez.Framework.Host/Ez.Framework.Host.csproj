@@ -34,6 +34,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Ez.Framework.Application\Ez.Framework.Application.csproj" />
       <ProjectReference Include="..\Ez.Framework.Domain\Ez.Framework.Domain.csproj" />
+      <ProjectReference Include="..\Ez.Framework.Infrastructure\Ez.Framework.Infrastructure.csproj" />
       <ProjectReference Include="..\Ez.Framework.Persistence\Ez.Framework.Persistence.csproj" />
     </ItemGroup>
 

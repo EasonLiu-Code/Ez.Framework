@@ -1,3 +1,4 @@
+using System.Drawing.Drawing2D;
 using MediatR;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -18,7 +19,7 @@ internal sealed class IntegrationEventProcessor(
         {
             try
             {
-                if (integrationEvent.IsLog)
+                if (integrationEvent.IsLog&&!string.IsNullOrWhiteSpace(integrationEvent.Key))
                 {
                     logger.LogInformation("Processing {IntegrationEventId}", integrationEvent.Key);
                 }

@@ -16,7 +16,7 @@ public class ArticleInsertEvent: IntegrationEvent
     public string EventData { get; init; } = string.Empty;
 
     /// <summary></summary>
-    public override Guid Key { get; init; }
+    public override string? Key { get; init; }
     /// <summary></summary>
     public override bool IsLog { get; init; }
 }

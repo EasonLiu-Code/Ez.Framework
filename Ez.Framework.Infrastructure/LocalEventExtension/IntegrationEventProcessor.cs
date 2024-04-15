@@ -20,17 +20,18 @@ internal sealed class IntegrationEventProcessor(
             {
                 if (integrationEvent.IsLog)
                 {
-                    logger.LogInformation("Processing {IntegrationEventId}", integrationEvent.Id);
+                    logger.LogInformation("Processing {IntegrationEventId}", integrationEvent.Key);
                 }
                 await publisher.Publish(integrationEvent, stoppingToken);
             }
             catch (Exception e)
             {
-                logger.LogInformation("Error {IntegrationEventId}", integrationEvent.Id);
+                logger.LogInformation("Error {IntegrationEventId}", integrationEvent.Key);
             }
             finally
             {
-                logger.LogInformation("Processed {IntegrationEventId}", integrationEvent.Id);
+                //test
+                logger.LogInformation("Processed {IntegrationEventId}", integrationEvent.Key);
             }
         }
     }

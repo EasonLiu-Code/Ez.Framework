@@ -11,11 +11,13 @@ public class ArticleInsertEvent: IntegrationEvent
     /// </summary>
     public ArticleInsertEvent()
     {
-        this.Id= Guid.NewGuid();
-        this.IsLog = false;
     }
     /// <summary></summary>
     public string EventData { get; init; } = string.Empty;
-    
+
+    /// <summary></summary>
+    public override Guid Key { get; init; }
+    /// <summary></summary>
+    public override bool IsLog { get; init; }
 }
 

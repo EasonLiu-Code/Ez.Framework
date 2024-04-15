@@ -4,7 +4,7 @@ namespace Ez.Infrastructure.LocalEventExtension;
 public abstract class IntegrationEvent:IIntegrationEvent
 {
     /// <summary></summary>
-    public Guid Id { get; init; }
+    public abstract Guid Key { get; init; }
     /// <summary></summary>
-    public bool IsLog { get; init; }
+    public abstract bool IsLog { get; init; }
 }

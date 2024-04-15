@@ -6,7 +6,7 @@ namespace Ez.Infrastructure.LocalEventExtension;
 public interface IIntegrationEvent:INotification
 {
     /// <summary></summary>
-    Guid Id { get; init; }
+    Guid Key { get; init; }
 
     /// <summary></summary>
     public bool IsLog { get; init; }

@@ -1,3 +1,8 @@
-.NET 8.0+EF+MassTransit
-docker-compose 
-redis pgsql rabbitmq 
+.NET 8.0
+Docker-compose
+EF
+Masstransit 
+rabbitmq 
+redis 
+pgsql
+

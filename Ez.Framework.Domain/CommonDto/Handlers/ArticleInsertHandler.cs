@@ -1,3 +1,4 @@
+using System.Text;
 using Ez.Domain.CommonDto.Events;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -15,6 +16,7 @@ public class ArticleInsertHandler(ILogger<ArticleInsertHandler> logger):INotific
     public async Task Handle(ArticleInsertEvent notification, CancellationToken cancellationToken)
     {
         await Task.Delay(TimeSpan.FromSeconds(5), cancellationToken);
-        logger.LogInformation("ArticleInsertEventHandle ok !!!!!!!!!!!");
+        logger.LogInformation(
+            new StringBuilder().Append("ArticleInsertEventHandle ok !!!!!!!!!!!").ToString(),notification.EventData);
     }
 }

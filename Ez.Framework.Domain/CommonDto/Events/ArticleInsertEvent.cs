@@ -4,5 +4,18 @@ namespace Ez.Domain.CommonDto.Events;
 
 /// <summary>
 /// </summary>
-/// <param name="Id"></param>
-public record ArticleInsertEvent(Guid Id,bool IsLog) : IntegrationEvent(Id,IsLog);
+public class ArticleInsertEvent: IntegrationEvent
+{
+    /// <summary>
+    /// ctor
+    /// </summary>
+    public ArticleInsertEvent()
+    {
+        this.Id= Guid.NewGuid();
+        this.IsLog = false;
+    }
+    /// <summary></summary>
+    public string EventData { get; init; } = string.Empty;
+    
+}
+

@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 namespace Ez.Domain.CommonDto.Handlers;
 
 /// <summary></summary>
-public class ArticleInsertHandler(ILogger logger):INotificationHandler<ArticleInsertEvent>
+public class ArticleInsertHandler(ILogger<ArticleInsertHandler> logger):INotificationHandler<ArticleInsertEvent>
 {
     /// <summary>
     /// Handle
@@ -14,6 +14,7 @@ public class ArticleInsertHandler(ILogger logger):INotificationHandler<ArticleIn
     /// <param name="cancellationToken"></param>
     public async Task Handle(ArticleInsertEvent notification, CancellationToken cancellationToken)
     {
-       logger.LogInformation("ArticleInsertEvent ok !!!!!!!!!!!");
+        await Task.Delay(TimeSpan.FromSeconds(5), cancellationToken);
+        logger.LogInformation("ArticleInsertEventHandle ok !!!!!!!!!!!");
     }
 }

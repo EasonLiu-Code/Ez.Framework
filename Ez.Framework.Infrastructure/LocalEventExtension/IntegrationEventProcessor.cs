@@ -14,14 +14,24 @@ internal sealed class IntegrationEventProcessor(
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        
         await foreach (IIntegrationEvent integrationEvent in queue.Reader.ReadAllAsync(stoppingToken))
         {
-            logger.LogInformation("Publishing {IntegrationEventId}", integrationEvent.Id);
-
-            await publisher.Publish(integrationEvent, stoppingToken);
-
-            logger.LogInformation("Processed {IntegrationEventId}", integrationEvent.Id);
+            try
+            {
+                if (integrationEvent.IsLog)
+                {
+                    logger.LogInformation("Processing {IntegrationEventId}", integrationEvent.Id);
+                }
+                await publisher.Publish(integrationEvent, stoppingToken);
+            }
+            catch (Exception e)
+            {
+                logger.LogInformation("Error {IntegrationEventId}", integrationEvent.Id);
+            }
+            finally
+            {
+                logger.LogInformation("Processed {IntegrationEventId}", integrationEvent.Id);
+            }
         }
     }
 }

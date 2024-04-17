@@ -14,6 +14,7 @@ internal sealed class IntegrationEventProcessor(
 {
     /// <summary>
     /// 待补充系统重启时的消息恢复，建议redis持久化
+    /// channel可以改成concurrentDictionary<>缓存key，读取key对应的value
     /// </summary>
     /// <param name="stoppingToken"></param>
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)

@@ -1,4 +1,3 @@
-using System.Drawing.Drawing2D;
 using MediatR;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -13,6 +12,10 @@ internal sealed class IntegrationEventProcessor(
     IPublisher publisher,
     ILogger<IntegrationEventProcessor> logger) : BackgroundService
 {
+    /// <summary>
+    /// 待补充系统重启时的消息恢复，建议redis持久化
+    /// </summary>
+    /// <param name="stoppingToken"></param>
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         await foreach (IIntegrationEvent integrationEvent in queue.Reader.ReadAllAsync(stoppingToken))

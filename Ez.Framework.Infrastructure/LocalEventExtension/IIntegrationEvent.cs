@@ -6,8 +6,5 @@ namespace Ez.Infrastructure.LocalEventExtension;
 public interface IIntegrationEvent:INotification
 {
     /// <summary></summary>
-    string? Key { get; init; }
-
-    /// <summary></summary>
-    public bool IsLog { get; init; }
+    string Key { get; init; }
 }

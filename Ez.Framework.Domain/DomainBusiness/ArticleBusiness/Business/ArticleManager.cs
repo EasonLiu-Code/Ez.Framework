@@ -28,6 +28,6 @@ public class ArticleManager(
         };
         await articleRepository.InsertAsync(article,cancellationToken:cancellationToken);
         await articleRepository.SaveChangesAsync(cancellationToken:cancellationToken);
-        await localEvent.PublishAsync(new ArticleInsertEvent{EventData = "测试11111111111111111"},cancellationToken);
+        await localEvent.PublishAsync(new ArticleInsertEvent(eventData:"111",key:$"{InsertDataAsync}-{DateTime.Now}"),cancellationToken);
     }
 }

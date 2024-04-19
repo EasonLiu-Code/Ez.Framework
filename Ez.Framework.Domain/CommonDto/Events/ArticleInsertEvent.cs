@@ -9,15 +9,14 @@ public class ArticleInsertEvent: IntegrationEvent
     /// <summary>
     /// ctor
     /// </summary>
-    public ArticleInsertEvent()
+    public ArticleInsertEvent(string key, string eventData)
     {
+        Key = key;
+        EventData = eventData;
     }
     /// <summary></summary>
-    public string EventData { get; init; } = string.Empty;
-
+    public string EventData { get; init; }
     /// <summary></summary>
-    public override string? Key { get; init; }
-    /// <summary></summary>
-    public override bool IsLog { get; init; }
+    public sealed override string? Key { get; init; }
 }
 

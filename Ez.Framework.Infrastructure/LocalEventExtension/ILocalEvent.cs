@@ -10,6 +10,6 @@ public interface ILocalEvent
     /// <param name="cancellationToken"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    Task PublishAsync<T>(T integrationEvent, CancellationToken cancellationToken = default)
+    Task PublishAsync<T>(T integrationEvent,CancellationToken cancellationToken = default)
         where T : class, IIntegrationEvent;
 }

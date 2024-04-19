@@ -1,6 +1,8 @@
+using System.Text.Json;
 using MediatR;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using StackExchange.Redis;
 
 namespace Ez.Infrastructure.LocalEventExtension;
 
@@ -10,33 +12,35 @@ namespace Ez.Infrastructure.LocalEventExtension;
 internal sealed class IntegrationEventProcessor(
     InMemoryMessageQueue queue,
     IPublisher publisher,
+    IConnectionMultiplexer redis,
     ILogger<IntegrationEventProcessor> logger) : BackgroundService
 {
+    private const string QueueKey = "integration_events";
     /// <summary>
-    /// 待补充系统重启时的消息恢复，建议redis持久化
-    /// channel可以改成concurrentDictionary<>缓存key，读取key对应的value
+    /// 
     /// </summary>
     /// <param name="stoppingToken"></param>
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+        await Task.Run(async () =>
+        {
+            while (true)
+            {
+                var eventData = await redis.GetDatabase().ListLeftPopAsync(QueueKey);
+                if (!eventData.HasValue) continue;
+                IIntegrationEvent integrationEvent = JsonSerializer.Deserialize<IIntegrationEvent>(eventData);
+                if (integrationEvent != null) await queue.Writer.WriteAsync(integrationEvent, stoppingToken);
+            }
+        },stoppingToken);
         await foreach (IIntegrationEvent integrationEvent in queue.Reader.ReadAllAsync(stoppingToken))
         {
             try
             {
-                if (integrationEvent.IsLog&&!string.IsNullOrWhiteSpace(integrationEvent.Key))
-                {
-                    logger.LogInformation("Processing {IntegrationEventId}", integrationEvent.Key);
-                }
                 await publisher.Publish(integrationEvent, stoppingToken);
             }
-            catch (Exception e)
+            catch
             {
-                logger.LogInformation("Error {IntegrationEventId}", integrationEvent.Key);
-            }
-            finally
-            {
-                //test
-                logger.LogInformation("Processed {IntegrationEventId}", integrationEvent.Key);
+                logger.LogInformation("Error {IntegrationEventKey}", integrationEvent.Key);
             }
         }
     }

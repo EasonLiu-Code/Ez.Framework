@@ -3,14 +3,10 @@ using Carter;
 using Ez.Application;
 using Ez.Domain;
 using Ez.Domain.DistributeEventsHandle.Publishers;
-using Ez.Domain.IRepositories;
 using Ez.Infrastructure;
 using MassTransit;
-using Microsoft.EntityFrameworkCore;
 using Persistence;
-using Persistence.AppDbContext;
 using Persistence.Migrations;
-using Persistence.Repositories;
 using IConsumer = Ez.Domain.DistributeEventsHandle.Consumers.IConsumer;
 
 SetThreadPool();

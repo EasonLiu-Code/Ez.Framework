@@ -4,7 +4,7 @@ using StackExchange.Redis;
 namespace Ez.Infrastructure.LocalEventExtension;
 
 /// <summary></summary>
-internal sealed class LocalEvent(InMemoryMessageQueue queue,IConnectionMultiplexer redis):ILocalEvent
+internal sealed class LocalEvent(InMemoryMessageQueue queue):ILocalEvent
 {
     private const string QueueKey = "integration_events";
     /// <summary>
@@ -17,7 +17,6 @@ internal sealed class LocalEvent(InMemoryMessageQueue queue,IConnectionMultiplex
     /// <exception cref="NotImplementedException"></exception>
     public async Task PublishAsync<T>(T integrationEvent,CancellationToken cancellationToken = default) where T : class,IIntegrationEvent
     {
-        var eventData= JsonSerializer.Serialize(integrationEvent);
-        await redis.GetDatabase().ListRightPushAsync(QueueKey, eventData);
+        await queue.EnqueueAsync(integrationEvent);
     }
 }

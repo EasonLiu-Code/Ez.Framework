@@ -2,6 +2,8 @@ using Ez.Domain.CommonDto.Events;
 using Ez.Domain.DomainBusiness.ArticleBusiness.Entities;
 using Ez.Domain.IRepositories;
 using Ez.Infrastructure.LocalEventExtension;
+using Microsoft.Extensions.Caching.Distributed;
+using StackExchange.Redis;
 
 namespace Ez.Domain.DomainBusiness.ArticleBusiness.Business;
 
@@ -10,7 +12,8 @@ namespace Ez.Domain.DomainBusiness.ArticleBusiness.Business;
 /// </summary>
 public class ArticleManager(
     IArticleRepository articleRepository,
-    ILocalEvent localEvent)
+    ILocalEvent localEvent,
+    IDistributedCache distributedCache)
 {
     /// <summary>
     /// InsertDataAsync

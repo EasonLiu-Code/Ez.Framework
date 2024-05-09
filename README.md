@@ -10,8 +10,8 @@
 
 **运维：**Docker-compose
 
-**主要使用的库：**EF8.0+Masstransit+MeditaR
+**Nuget：**EF8.0+Masstransit+MeditaR
 
-rabbitmq redis pgsql
+**中间件：**rabbitmq redis pgsql
 
 TODO:Grpc,OpenTelemetry,CI/CD zookeeper+kafka 

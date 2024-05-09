@@ -13,3 +13,5 @@
 **主要使用的库：**EF8.0+Masstransit+MeditaR
 
 rabbitmq redis pgsql
+
+TODO:Grpc,OpenTelemetry

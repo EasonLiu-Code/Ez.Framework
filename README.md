@@ -14,4 +14,4 @@
 
 rabbitmq redis pgsql
 
-TODO:Grpc,OpenTelemetry,CI/CD
+TODO:Grpc,OpenTelemetry,CI/CD zookeeper+kafka 

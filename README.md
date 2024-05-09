@@ -14,4 +14,4 @@
 
 rabbitmq redis pgsql
 
-TODO:Grpc,OpenTelemetry
+TODO:Grpc,OpenTelemetry,CI/CD

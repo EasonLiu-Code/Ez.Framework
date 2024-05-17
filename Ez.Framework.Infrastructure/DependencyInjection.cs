@@ -1,3 +1,4 @@
+using Ez.Infrastructure.DependencyInjectionExtend;
 using Ez.Infrastructure.LocalEventExtension;
 using MassTransit;
 using Microsoft.Extensions.Configuration;
@@ -20,6 +21,7 @@ public static class DependencyInjection
         services.AddSingleton<InMemoryMessageQueue>();
         services.AddSingleton<ILocalEvent, LocalEvent>();
         services.AddHostedService<IntegrationEventProcessor>();
+        services.AddTransient<ILazyServiceProvider, LazyServiceProvider>();
         return services;
     }
 }

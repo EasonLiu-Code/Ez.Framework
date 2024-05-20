@@ -5,6 +5,10 @@ using Ez.Domain;
 using Ez.Domain.DistributeEventsHandle.Publishers;
 using Ez.Infrastructure;
 using MassTransit;
+using OpenTelemetry.Logs;
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 using Persistence;
 using Persistence.Migrations;
 using IConsumer = Ez.Domain.DistributeEventsHandle.Consumers.IConsumer;
@@ -46,7 +50,6 @@ builder.Services.AddMassTransit(busConfigurator =>
     });
     //Memory
     //busConfigurator.UsingInMemory((context,config)=>config.ConfigureEndpoints(context));
-    
     //Sign in Consumer 
     var consumers = typeof(IConsumer).Assembly.GetTypes()
         .Where(type => type is { IsClass: true, IsAbstract: false } && typeof(IConsumer).IsAssignableFrom(type));
@@ -57,11 +60,25 @@ builder.Services.AddMassTransit(busConfigurator =>
 });
 //测试后台运行self-publisher and self-consumer
 builder.Services.AddHostedService<MessagePublisher>();
-
-
 //Carter
 builder.Services.AddCarter();
-
+//OpenTelemetry
+builder.Services.AddOpenTelemetry()
+    .ConfigureResource(resource => resource.AddService("Ez.Framework"))
+    .WithMetrics(metrics =>
+    {
+        metrics.AddAspNetCoreInstrumentation()
+            .AddHttpClientInstrumentation();
+        metrics.AddOtlpExporter();
+    })
+    .WithTracing(tracing =>
+    {
+        tracing.AddAspNetCoreInstrumentation()
+            .AddHttpClientInstrumentation()
+            .AddEntityFrameworkCoreInstrumentation();
+        tracing.AddOtlpExporter();
+    });
+builder.Logging.AddOpenTelemetry(logging => logging.AddOtlpExporter());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -71,9 +71,7 @@ builder.Services.AddOpenTelemetry()
         metrics
             .AddAspNetCoreInstrumentation()
             .AddHttpClientInstrumentation();
-
         metrics.AddMeter(DiagnosticsConfig.Meter.Name);
-
         metrics.AddOtlpExporter();
     })
     .WithTracing(tracing =>
@@ -82,7 +80,6 @@ builder.Services.AddOpenTelemetry()
             .AddAspNetCoreInstrumentation()
             .AddHttpClientInstrumentation()
             .AddEntityFrameworkCoreInstrumentation();
-
         tracing.AddOtlpExporter();
     });
 

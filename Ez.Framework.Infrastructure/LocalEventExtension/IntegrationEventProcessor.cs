@@ -18,17 +18,13 @@ internal sealed class IntegrationEventProcessor(
     /// <param name="stoppingToken"></param>
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        while (!stoppingToken.IsCancellationRequested)
+        await foreach (IIntegrationEvent integrationEvent in queue.Reader.ReadAllAsync(stoppingToken))
         {
-            try
-            {
-                var integrationEvent = await queue.DequeueAsync<IIntegrationEvent>();
-                await publisher.Publish(integrationEvent, stoppingToken);
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Error processing integration event");
-            }
+            logger.LogInformation("Publishing {IntegrationEventId}", integrationEvent.Key);
+
+            await publisher.Publish(integrationEvent, stoppingToken);
+
+            logger.LogInformation("Processed {IntegrationEventId}", integrationEvent.Key);
         }
     }
 }

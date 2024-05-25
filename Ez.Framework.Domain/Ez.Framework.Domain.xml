@@ -24,12 +24,17 @@
         <member name="T:Ez.Domain.CommonDto.Events.ArticleInsertEvent">
             <summary>
             </summary>
-            <param name="Id"></param>
         </member>
-        <member name="M:Ez.Domain.CommonDto.Events.ArticleInsertEvent.#ctor(System.Guid)">
+        <member name="M:Ez.Domain.CommonDto.Events.ArticleInsertEvent.#ctor(System.String,System.String)">
             <summary>
+            ctor
             </summary>
-            <param name="Id"></param>
+        </member>
+        <member name="P:Ez.Domain.CommonDto.Events.ArticleInsertEvent.EventData">
+            <summary></summary>
+        </member>
+        <member name="P:Ez.Domain.CommonDto.Events.ArticleInsertEvent.Key">
+            <summary></summary>
         </member>
         <member name="T:Ez.Domain.CommonDto.Events.TestMessageEvent">
             <summary>
@@ -42,6 +47,9 @@
             </summary>
         </member>
         <member name="T:Ez.Domain.CommonDto.Handlers.ArticleInsertHandler">
+            <summary></summary>
+        </member>
+        <member name="M:Ez.Domain.CommonDto.Handlers.ArticleInsertHandler.#ctor(Microsoft.Extensions.Logging.ILogger{Ez.Domain.CommonDto.Handlers.ArticleInsertHandler})">
             <summary></summary>
         </member>
         <member name="M:Ez.Domain.CommonDto.Handlers.ArticleInsertHandler.Handle(Ez.Domain.CommonDto.Events.ArticleInsertEvent,System.Threading.CancellationToken)">
@@ -104,7 +112,7 @@
             ArticleManager
             </summary>
         </member>
-        <member name="M:Ez.Domain.DomainBusiness.ArticleBusiness.Business.ArticleManager.#ctor(Ez.Domain.IRepositories.IArticleRepository,Ez.Infrastructure.LocalEventExtension.ILocalEvent)">
+        <member name="M:Ez.Domain.DomainBusiness.ArticleBusiness.Business.ArticleManager.#ctor(Ez.Domain.IRepositories.IArticleRepository,Ez.Infrastructure.LocalEventExtension.ILocalEvent,Microsoft.Extensions.Caching.Distributed.IDistributedCache)">
             <summary>
             ArticleManager
             </summary>

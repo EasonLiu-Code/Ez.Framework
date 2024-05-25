@@ -112,7 +112,7 @@
             ArticleManager
             </summary>
         </member>
-        <member name="M:Ez.Domain.DomainBusiness.ArticleBusiness.Business.ArticleManager.#ctor(Ez.Domain.IRepositories.IArticleRepository,Ez.Infrastructure.LocalEventExtension.ILocalEvent,Microsoft.Extensions.Caching.Distributed.IDistributedCache)">
+        <member name="M:Ez.Domain.DomainBusiness.ArticleBusiness.Business.ArticleManager.#ctor(Ez.Domain.IRepositories.IArticleRepository,Ez.Infrastructure.LocalEventExtension.ILocalEvent,Microsoft.Extensions.Caching.Distributed.IDistributedCache,Microsoft.Extensions.Logging.ILogger{Ez.Domain.DomainBusiness.ArticleBusiness.Business.ArticleManager})">
             <summary>
             ArticleManager
             </summary>

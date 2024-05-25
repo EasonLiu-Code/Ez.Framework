@@ -10,6 +10,7 @@ using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using Persistence;
+using Persistence.ConstStrings;
 using Persistence.Migrations;
 using IConsumer = Ez.Domain.DistributeEventsHandle.Consumers.IConsumer;
 
@@ -64,20 +65,27 @@ builder.Services.AddHostedService<MessagePublisher>();
 builder.Services.AddCarter();
 //OpenTelemetry
 builder.Services.AddOpenTelemetry()
-    .ConfigureResource(resource => resource.AddService("Ez.Framework"))
+    .ConfigureResource(resource => resource.AddService(DiagnosticsConfig.ServiceName))
     .WithMetrics(metrics =>
     {
-        metrics.AddAspNetCoreInstrumentation()
+        metrics
+            .AddAspNetCoreInstrumentation()
             .AddHttpClientInstrumentation();
+
+        metrics.AddMeter(DiagnosticsConfig.Meter.Name);
+
         metrics.AddOtlpExporter();
     })
     .WithTracing(tracing =>
     {
-        tracing.AddAspNetCoreInstrumentation()
+        tracing
+            .AddAspNetCoreInstrumentation()
             .AddHttpClientInstrumentation()
             .AddEntityFrameworkCoreInstrumentation();
+
         tracing.AddOtlpExporter();
     });
+
 builder.Logging.AddOpenTelemetry(logging => logging.AddOtlpExporter());
 var app = builder.Build();
 

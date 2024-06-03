@@ -13,18 +13,22 @@ internal sealed class IntegrationEventProcessor(
     ILogger<IntegrationEventProcessor> logger) : BackgroundService
 {
     /// <summary>
-    /// 
+    /// ExecuteAsync
     /// </summary>
     /// <param name="stoppingToken"></param>
+    /// <returns></returns>
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         await foreach (IIntegrationEvent integrationEvent in queue.Reader.ReadAllAsync(stoppingToken))
         {
-            logger.LogInformation("Publishing {IntegrationEventId}", integrationEvent.Key);
-
-            await publisher.Publish(integrationEvent, stoppingToken);
-
-            logger.LogInformation("Processed {IntegrationEventId}", integrationEvent.Key);
+            try
+            {
+                await publisher.Publish(integrationEvent, stoppingToken);
+            }
+            catch
+            {
+                logger.LogInformation("Error {IntegrationEventKey}", integrationEvent.Key);
+            }
         }
     }
 }

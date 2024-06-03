@@ -12,7 +12,7 @@ internal sealed class LocalEvent(InMemoryMessageQueue queue):ILocalEvent
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public async Task PublishAsync<T>(T integrationEvent,CancellationToken cancellationToken = default) where T : class,IIntegrationEvent
+    public async Task PublishAsync<T>(T integrationEvent, CancellationToken cancellationToken = default) where T : class, IIntegrationEvent
     {
         await queue.Writer.WriteAsync(integrationEvent, cancellationToken);
     }

@@ -2,6 +2,7 @@
 using Ez.Domain.DomainBusiness.ArticleBusiness.Business;
 using Ez.Domain.DomainBusiness.ArticleBusiness.Entities;
 using Ez.Domain.IRepositories;
+using Ez.Infrastructure.DependencyInjectionExtend;
 using Ez.Infrastructure.LocalEventExtension;
 
 namespace Ez.Application.AppServices;
@@ -9,18 +10,25 @@ namespace Ez.Application.AppServices;
 /// <summary>
 /// ArticleAppService
 /// </summary>
-public class ArticleAppService(
-    IArticleRepository articleRepository,
-    ArticleManager articleManager):IArticleAppService
+public class ArticleAppService:IArticleAppService
 {
+    private readonly ILazyServiceProvider LazyServiceProvider;
+    private ArticleManager ArticleManager=>LazyServiceProvider.LazyGetRequiredService<ArticleManager>();
+    private IArticleRepository ArticleRepository=>LazyServiceProvider.LazyGetRequiredService<IArticleRepository>();
+    /// <summary>
+    /// 
+    /// </summary>
+    public ArticleAppService(ILazyServiceProvider lazyServiceProvider)
+    {
+        LazyServiceProvider = lazyServiceProvider;
+    }
     /// <summary>
     /// insertData
     /// </summary>
     public async Task InsertDataAsync()
     {
-        await articleManager.InsertDataAsync();
+        await ArticleManager.InsertDataAsync();
     }
-    
     /// <summary>
     /// GetArticleAsync
     /// </summary>
@@ -28,6 +36,6 @@ public class ArticleAppService(
     /// <returns></returns>
     public async Task<Article> GetArticleAsync(Guid articleId)
     {
-        return await articleRepository.FirstOrDefaultAsNoTrackingAsync(x => x.ArticleId.Equals(articleId));
+        return await ArticleRepository.FirstOrDefaultAsNoTrackingAsync(x => x.ArticleId.Equals(articleId));
     }
 }

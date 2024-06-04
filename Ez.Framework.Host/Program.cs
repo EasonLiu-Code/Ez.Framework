@@ -49,9 +49,6 @@ builder.Services.AddMassTransit(busConfigurator =>
         });
         configurator.ConfigureEndpoints(context);
     });
-    //Memory
-    //busConfigurator.UsingInMemory((context,config)=>config.ConfigureEndpoints(context));
-    //Sign in Consumer 
     var consumers = typeof(IConsumer).Assembly.GetTypes()
         .Where(type => type is { IsClass: true, IsAbstract: false } && typeof(IConsumer).IsAssignableFrom(type));
     foreach (var consumer in consumers)

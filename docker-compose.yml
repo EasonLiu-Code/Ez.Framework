@@ -7,7 +7,7 @@
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=9000
-      - OTEL_EXPORTER_OTLP_ENDPOINT=http://coffeeshop.dashboard:18889
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://ez.framework.dashboard:18889
     ports:
         - "9000:9000"
 #    volumes:
@@ -52,7 +52,7 @@
     networks:
       - ez.framework
       
-  ez.framework.board:
+  ez.framework.dashboard:
     image: mcr.microsoft.com/dotnet/nightly/aspire-dashboard:latest
     container_name: dashboard
     ports:

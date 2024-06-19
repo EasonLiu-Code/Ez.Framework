@@ -10,9 +10,6 @@
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://ez.framework.dashboard:18889
     ports:
         - "9000:9000"
-#    volumes:
-#      - $HOME/Library/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
-#      - $HOME/Library/ASP.NET/Https:/home/app/.aspnet/https:ro
     networks:
       - ez.framework
 

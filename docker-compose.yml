@@ -10,9 +10,6 @@
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://ez.framework.dashboard:18889
     ports:
         - "9000:9000"
-    networks:
-      - ez.framework
-
       
   ez.framework.database:
     image: postgres:latest
@@ -25,16 +22,12 @@
       - ./data/postgres_data:/var/lib/postgresql/data
     ports:
       - 5432:5432
-    networks:
-      - ez.framework
   
   ez.framework.cache:
     image: redis:latest
     restart: always
     ports:
       - '6379:6379'
-    networks:
-      - ez.framework
         
   ez.framework.rabbitmq:
     image: "rabbitmq:3-management"
@@ -46,16 +39,10 @@
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
-    networks:
-      - ez.framework
       
   ez.framework.dashboard:
     image: mcr.microsoft.com/dotnet/nightly/aspire-dashboard:latest
     container_name: dashboard
     ports:
       - 18888:18888
-    networks:
-      - ez.framework
-networks:
-  ez.framework:
 

@@ -39,7 +39,7 @@ builder.Services.AddApplication();
 // {
 //     var configuration = ConfigurationOptions.Parse(builder.Configuration.GetConnectionString("Cache1") ?? string.Empty);
 //     configuration.CommandMap = CommandMap.Sentinel; // 使用哨兵模式
-//     configuration.TieBreaker = ""; // 关闭 TieBreaker
+//     configuration.TieBreaker = ""; // 关闭 TieBreaker简化配置以及减少复杂度 集群规模较大开启可以避免脑裂问题（split-brain problem）。
 //     configuration.DefaultVersion = new Version(6, 2, 1); // 设置适当的 Redis 版本
 //     return ConnectionMultiplexer.Connect(configuration);
 // });

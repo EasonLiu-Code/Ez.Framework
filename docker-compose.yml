@@ -45,4 +45,65 @@
     container_name: dashboard
     ports:
       - 18888:18888
-
+#主从模式+哨兵模式 
+#  ez.framework.redis-master:
+#    image: redis:latest
+#    container_name: redis-master
+#    ports:
+#      - "6379:6379"
+#    volumes:
+#      - ./redis-master/data:/data
+#    command: ["redis-server", "--appendonly", "yes"]
+#
+#  ez.framework.redis-slave:
+#    image: redis:latest
+#    container_name: redis-slave
+#    depends_on:
+#      - ez.framework.redis-master
+#    ports:
+#      - "6380:6379"
+#    volumes:
+#      - ./redis-slave/data:/data
+#    command: ["redis-server", "--appendonly", "yes", "--slaveof", "redis-master", "6379"]
+#
+#  ez.framework.redis-sentinel1:
+#    image: redis:latest
+#    container_name: redis-sentinel1
+#    depends_on:
+#      - ez.framework.redis-master
+#      - ez.framework.redis-slave
+#    ports:
+#      - "26379:26379"
+#    command:
+#      - "redis-sentinel"
+#      - "/redis-sentinel/sentinel.conf"
+#    volumes:
+#      - ./redis-sentinel/sentinel.conf:/redis-sentinel/sentinel.conf
+#
+#  ez.framework.redis-sentinel2:
+#    image: redis:latest
+#    container_name: redis-sentinel2
+#    depends_on:
+#      - ez.framework.redis-master
+#      - ez.framework.redis-slave
+#    ports:
+#      - "26380:26379"
+#    command:
+#      - "redis-sentinel"
+#      - "/redis-sentinel/sentinel.conf"
+#    volumes:
+#      - ./redis-sentinel/sentinel.conf:/redis-sentinel/sentinel.conf
+#
+#  ez.framework.redis-sentinel3:
+#    image: redis:latest
+#    container_name: redis-sentinel3
+#    depends_on:
+#      - ez.framework.redis-master
+#      - ez.framework.redis-slave
+#    ports:
+#      - "26381:26379"
+#    command:
+#      - "redis-sentinel"
+#      - "/redis-sentinel/sentinel.conf"
+#    volumes:
+      - ./redis-sentinel/sentinel.conf:/redis-sentinel/sentinel.conf

@@ -12,6 +12,7 @@ using OpenTelemetry.Trace;
 using Persistence;
 using Persistence.ConstStrings;
 using Persistence.Migrations;
+using StackExchange.Redis;
 using IConsumer = Ez.Domain.DistributeEventsHandle.Consumers.IConsumer;
 
 SetThreadPool();
@@ -33,6 +34,15 @@ builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddInfrastructure();
 builder.Services.AddDomain();
 builder.Services.AddApplication();
+// 使用 StackExchange.Redis 连接哨兵模式
+// builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
+// {
+//     var configuration = ConfigurationOptions.Parse(builder.Configuration.GetConnectionString("Cache1") ?? string.Empty);
+//     configuration.CommandMap = CommandMap.Sentinel; // 使用哨兵模式
+//     configuration.TieBreaker = ""; // 关闭 TieBreaker
+//     configuration.DefaultVersion = new Version(6, 2, 1); // 设置适当的 Redis 版本
+//     return ConnectionMultiplexer.Connect(configuration);
+// });
 builder.Services.AddStackExchangeRedisCache(options =>
     options.Configuration = builder.Configuration.GetConnectionString("Cache"));
 //配置MassTransit

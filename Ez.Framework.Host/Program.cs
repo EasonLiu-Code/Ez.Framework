@@ -43,6 +43,11 @@ builder.Services.AddApplication();
 //     configuration.DefaultVersion = new Version(6, 2, 1); // 设置适当的 Redis 版本
 //     return ConnectionMultiplexer.Connect(configuration);
 // });
+// builder.Services.AddStackExchangeRedisCache(options =>
+// {
+//     options.Configuration = builder.Configuration.GetConnectionString("Cache1");
+//     options.InstanceName = "SampleInstance"; // 此处的 InstanceName 用于标识不同的缓存实例
+// });
 builder.Services.AddStackExchangeRedisCache(options =>
     options.Configuration = builder.Configuration.GetConnectionString("Cache"));
 //配置MassTransit

@@ -90,33 +90,9 @@ public  class BaseRepository<TEntity>(ApplicationDbContext dbContext):IBaseRepos
             return;
         await this.SaveChangesAsync(cancellationToken);
     }
-
-    public  async Task<TEntity?> InsertOrUpdateAsync(
-        TEntity entity,
-        bool autoSave = false,
-        CancellationToken cancellationToken = default(CancellationToken))
-    {
-        TEntity entity1;
-        if (this.IsTransient(entity))
-            entity1 = await this.InsertAsync(entity, autoSave, cancellationToken);
-        else
-            entity1 = await this.UpdateAsync(entity, autoSave, cancellationToken);
-        return entity1;
-    }
     
-
     public  async Task SaveChangesAsync(CancellationToken cancellationToken)
     {
         var num = await dbContext.SaveChangesAsync(cancellationToken);
     }
-    
-    protected virtual bool IsTransient(TEntity entity)
-    {
-        DefaultInterpolatedStringHandler interpolatedStringHandler = new DefaultInterpolatedStringHandler(84, 1);
-        interpolatedStringHandler.AppendLiteral("must Set PrimaryKey of [Entity] Type ");
-        interpolatedStringHandler.AppendFormatted<Type>(typeof (TEntity));
-        interpolatedStringHandler.AppendLiteral(" or override method of Repository`s IsTransient");
-        throw new NotSupportedException(interpolatedStringHandler.ToStringAndClear());
-    }
-
 }

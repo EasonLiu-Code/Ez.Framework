@@ -44,7 +44,7 @@ public  class BaseRepository<TEntity>(ApplicationDbContext dbContext):IBaseRepos
     )
     {
         var savedEntity=await dbContext.Set<TEntity>().AddAsync(entity,cancellationToken);
-        if (autoSave)
+        if (!autoSave)
         {
             var num = await dbContext.SaveChangesAsync(cancellationToken);
         }
@@ -57,7 +57,7 @@ public  class BaseRepository<TEntity>(ApplicationDbContext dbContext):IBaseRepos
     {
         var entityArray = entities.ToArray<TEntity>();
         await dbContext.Set<TEntity>().AddRangeAsync((IEnumerable<TEntity>)entityArray,cancellationToken);
-        if (!autoSave)
+        if (autoSave)
         {
             return;
         }
@@ -69,7 +69,7 @@ public  class BaseRepository<TEntity>(ApplicationDbContext dbContext):IBaseRepos
         CancellationToken cancellationToken = default)
     {
         var updatedEntity = dbContext.Update<TEntity>(entity).Entity;
-        if (autoSave)
+        if (!autoSave)
         {
             var num = await dbContext.SaveChangesAsync(cancellationToken);
         }
@@ -86,7 +86,7 @@ public  class BaseRepository<TEntity>(ApplicationDbContext dbContext):IBaseRepos
         {
             TEntity entity2 = await this.UpdateAsync(entity1, false, cancellationToken);
         }
-        if (!autoSave)
+        if (autoSave)
             return;
         await this.SaveChangesAsync(cancellationToken);
     }

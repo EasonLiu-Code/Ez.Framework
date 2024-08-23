@@ -2,7 +2,7 @@
 using Carter;
 using Ez.Application;
 using Ez.Domain;
-using Ez.Domain.DistributeEventsHandle.Publishers;
+using Ez.Domain.Event.Handlers;
 using Ez.Infrastructure;
 using MassTransit;
 using OpenTelemetry.Logs;
@@ -13,7 +13,7 @@ using Persistence;
 using Persistence.ConstStrings;
 using Persistence.Migrations;
 using StackExchange.Redis;
-using IConsumer = Ez.Domain.DistributeEventsHandle.Consumers.IConsumer;
+using IConsumer = Ez.Domain.Event.Events.IConsumer;
 
 SetThreadPool();
 var builder = WebApplication.CreateBuilder(args);

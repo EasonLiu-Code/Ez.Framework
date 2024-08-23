@@ -1,5 +1,5 @@
-using Ez.Domain.CommonDto.Events;
 using Ez.Domain.DomainBusiness.ArticleBusiness.Entities;
+using Ez.Domain.Event.Events;
 using Ez.Domain.IRepositories;
 using Ez.Infrastructure.LocalEventExtension;
 using Microsoft.Extensions.Caching.Distributed;

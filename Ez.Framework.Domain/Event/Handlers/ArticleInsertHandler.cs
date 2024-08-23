@@ -1,9 +1,9 @@
 using System.Text;
-using Ez.Domain.CommonDto.Events;
+using Ez.Domain.Event.Events;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Ez.Domain.CommonDto.Handlers;
+namespace Ez.Domain.Event.Handlers;
 
 /// <summary></summary>
 public class ArticleInsertHandler(ILogger<ArticleInsertHandler> logger):INotificationHandler<ArticleInsertEvent>

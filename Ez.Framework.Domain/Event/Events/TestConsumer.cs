@@ -1,8 +1,6 @@
-﻿using Ez.Domain.CommonDto.Events;
-using MassTransit;
-using IConsumer = Ez.Domain.DistributeEventsHandle.Consumers.IConsumer;
+﻿using MassTransit;
 
-namespace Ez.Domain.DistributeEventsHandle.Consumers;
+namespace Ez.Domain.Event.Events;
 
 /// <summary>
 /// Consumer

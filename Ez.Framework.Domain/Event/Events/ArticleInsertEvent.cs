@@ -1,6 +1,6 @@
 using Ez.Infrastructure.LocalEventExtension;
 
-namespace Ez.Domain.CommonDto.Events;
+namespace Ez.Domain.Event.Events;
 
 /// <summary>
 /// </summary>
